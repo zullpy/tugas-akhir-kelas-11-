@@ -6,8 +6,6 @@ $nama = $_POST['nama'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Hash password untuk keamanan
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Cek apakah email sudah terdaftar
 $query_check = "SELECT * FROM users WHERE email=?";
@@ -22,10 +20,10 @@ if (mysqli_num_rows($result_check) > 0) {
     // Insert user baru
     $query_insert = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
     $stmt_insert = mysqli_prepare($koneksi, $query_insert);
-    mysqli_stmt_bind_param($stmt_insert, "sss", $nama, $email, $hashed_password);
+    mysqli_stmt_bind_param($stmt_insert, "sss", $nama, $email, $password);
     
     if (mysqli_stmt_execute($stmt_insert)) {
-        echo "Registrasi berhasil!";
+        echo "<script>alert('Registrasi berhasil! Silahkan login.'); window.location.href = '../form_register_user/index.html';</script>";
         $_SESSION['username'] = $nama;
     } else {
         echo "Registrasi gagal: " . mysqli_error($koneksi);
