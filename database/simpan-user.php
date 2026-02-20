@@ -23,7 +23,7 @@ if (mysqli_num_rows($result_check) > 0) {
     mysqli_stmt_bind_param($stmt_insert, "sss", $nama, $email, $password);
     
     if (mysqli_stmt_execute($stmt_insert)) {
-        echo "<script>alert('Registrasi berhasil! Silahkan login.'); window.location.href = '../form_register_user/index.html';</script>";
+        echo "<script>alert('Registrasi berhasil! Silahkan login.'); window.location.href = '../login_user/index.php';</script>";
         $_SESSION['username'] = $nama;
     } else {
         echo "Registrasi gagal: " . mysqli_error($koneksi);

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Inventaris Buku</title>
     <link rel="stylesheet" href="pemilihan_role/style.css">
-    <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./asset/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="card">
+    <div class="card" >
         <div class="card-content">
             <div class="right-section">
                 <h1>SISTEM PEMINJAMAN BUKU<br>SMKS SUKAPURA</h1>
@@ -24,10 +24,10 @@
             </div>
             
             <div class="button-group">
-                <a href="../form_register_admin/index.html" class="btn btn-primary">
+                <a href="../login_admin" class="btn btn-primary link-slide slide-right">
                     Admin
                 </a>
-                <a href="../form_register_user/index.html" class="btn btn-primary">
+                <a href="../form_register_user" class="btn btn-primary link-slide slide-left">
                     User
                 </a>
             </div>
@@ -35,5 +35,5 @@
         </div>
     </div>
 </body>
-<script src="script.js"></script>
+<script src="pemilihan_role/script.js"></script>
 </html>

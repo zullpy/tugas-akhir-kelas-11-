@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peminjaman Buku</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form_register_user/style.css">
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <form action="../database/simpan-admin.php" method="post">
+    <form action="../database/simpan-user.php" method="post">
         <h2>buat akun baru</h2>
         <label for="nama">Nama Lengkap:</label>
         <input type="text" id="nama" name="nama" required>
@@ -20,14 +20,18 @@
         <input type="password" id="password" name="password" required>
 
         <button type="submit">Daftar</button>
+        <p class="footer-text">© SMKS SUKAPURA</p>
     </form>
-    <p>
-        Sudah Punya Akun? 
-        <a href="../login_admin/index.html">
+        <p>
+        Sudah Memiliki Akun? 
+        <a href="../login_user" class="link-slide slide-left">
             Login
+        </a>
+        <br>
+        <a href="../pemilihan_role" class="link-slide slide-right">
+            kembali ke pemelihan role
         </a>
     </p>
 </body>
-<script src="script.js"></script>
+<script src="form_register_user/script.js"></script>
 </html>
-
