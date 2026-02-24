@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lupa password</title>
     <link rel="stylesheet" href="lupa_pass/style.css">
+    <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
 </head>
 <body>
     <form action="../database/lupa_password_admin.php" method="POST">

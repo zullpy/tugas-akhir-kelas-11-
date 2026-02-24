@@ -27,11 +27,159 @@
 }
 
 
-.fade-out {
-    animation: slideOut 0.3s forwards;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@keyframes slideOut {
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+
+    background: linear-gradient(
+        to right,
+        #4a3a30 50%,
+        #efe7df 50%
+    );
+}
+
+/* CARD */
+.login-card {
+    width: 900px;
+    height: 520px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+
+    background: linear-gradient(
+        to right,
+        #5a4a3f 50%,
+        #f6f1ec 50%
+    );
+
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+}
+
+/* LEFT */
+.left {
+    width: 50%;
+    padding: 70px 40px 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.left h1 {
+    font-size: 34px;
+    margin-bottom: 14px;
+}
+
+.left p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* WRAPPER supaya buku bisa center */
+.left::after {
+    content: "";
+    flex-grow: 1;
+}
+
+/* GAMBAR BUKU */
+.illustration {
+    width: 240px; /* lebih besar */
+    align-self: center; /* center horizontal */
+    margin-top: 20px;
+}
+
+/* RIGHT */
+.right {
+    width: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right h2 {
+    margin-bottom: 20px;
+    color: #3b2f2a;
+}
+
+.forget{
+    text-decoration: none;
+    color: #3b2f2a;
+    margin-top: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 2px solid #8b7b70;
+    background: transparent;
+}
+
+input:focus{
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #6b584c;
+    color: white;
+    cursor: pointer;
+}
+
+/* PANAH */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    background: #5a4a3f;
+    color: white;
+    font-size: 22px;
+    padding: 10px 22px;
+    border-radius: 40px;
+    text-decoration: none;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.fade-out-left {
+    animation: slideOutLeft 0.3s forwards;
+}
+
+.fade-out-right {
+    animation: slideOutRight 0.3s forwards;
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
     from {
         transform: translateX(0);
         opacity: 1;
@@ -40,5 +188,58 @@
     to {
         transform: translateX(100%);
         opacity: 0;
+    }
+}
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+
+    body {
+        background: linear-gradient(
+            to bottom,
+            #4a3a30 50%,
+            #efe7df 50%
+        );
+        padding: 20px;
+    }
+
+    .login-card {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+
+        background: linear-gradient(
+            to bottom,
+            #5a4a3f 50%,
+            #f6f1ec 50%
+        );
+    }
+
+    .left {
+        width: 100%;
+        padding: 55px 20px 25px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .illustration {
+        width: 150px;
+        margin: 20px auto;
+    }
+
+    .right {
+        width: 100%;
+        padding: 25px 20px;
+    }
+
+    .back-btn {
+        top: 16px;
+        right: 16px;
+        font-size: 18px;
+        padding: 8px 18px;
+    }
+
+    button {
+        width: 100%;
     }
 }

@@ -6,6 +6,16 @@
     <title>Peminjaman Buku</title>
     <link rel="stylesheet" href="form_register_user/style.css">
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
 </head>
 <body>
     <form action="../database/simpan-user.php" method="post">
@@ -24,12 +34,12 @@
     </form>
         <p>
         Sudah Memiliki Akun? 
-        <a href="../login_user" class="link-slide slide-left">
+        <a href="../login_user" class="link-slide slide-right">
             Login
         </a>
         <br>
-        <a href="../pemilihan_role" class="link-slide slide-right">
-            kembali ke pemelihan role
+        <a href="../pemilihan_role" class="link-slide slide-left">
+            <i class="ph ph-arrow-circle-left"></i>
         </a>
     </p>
 </body>
