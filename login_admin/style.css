@@ -63,7 +63,7 @@ body {
 
 /* GAMBAR BUKU */
 .illustration {
-    width: 240px; /* lebih besar */
+    width: 500px; /* lebih besar */
     align-self: center; /* center horizontal */
     margin-top: 20px;
 }

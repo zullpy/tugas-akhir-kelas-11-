@@ -23,7 +23,7 @@
     <div class="left">
         <h1>Selamat datang di<br>Halaman Admin!</h1>
         <p>Anda dapat mengelola data buku, pengguna, dan laporan inventaris di sini.</p>
-        <img src="../asset/buku.webp" alt="buku" class="illustration">
+        <img src="../asset/buku.png" alt="buku" class="illustration">
     </div>
 
     <!-- KANAN -->
@@ -34,9 +34,9 @@
         </a>
         <form action="../database/proses_login_admin.php" method="post">
             <label>Email</label>
-            <input type="text" name="identifier" required>
+            <input type="text" name="identifier" id="input-identifier" required>
             <label>Password</label>
-            <input type="password" name="password" required>
+            <input type="password" name="password" id="input-password" required>
             <button type="submit">Login</button>
         </form>
         <a href="../lupa_pass_admin" class="link-slide slide-left forget">Lupa password?</a>

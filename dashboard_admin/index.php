@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
     <link rel="stylesheet" href="dashboard_admin/style.css">
-    <link rel="stylesheet" href="login_admin/style.css">
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
     <link
         rel="stylesheet"
@@ -22,7 +21,8 @@
     <header>
         <div class="logo-right">
             <img src="../asset/logo.png" alt="logo">
-            <h2>SMKS Sukapura</h2>
+            <h3>Sistem Peminjaman Buku</h3>
+            <h3>SMKS Sukapura</h3>
         </div>
 
         <div class="left">
@@ -32,11 +32,49 @@
     </header>
 
     <aside>
-
+        <i class="ph ph-book-open"></i><span>Dashboard</span>
+        <i class="ph ph-users"></i><span>Akun</span>
+        <i class="ph ph-books"></i><span>Data Buku</span>
+        <i class="ph ph-hand-arrow-down"></i><span>Peminjaman</span>
+        <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
     </aside>
 
     <main>
+        <div class="data-buku">
+            <div class="card">
+                <div class="card-title">Jumlah Akun</div>
+                <div class="card-value"><?= $akun['total'] ?></div>
+            </div>
 
+            <div class="card">
+                <div class="card-title">Total Buku</div>
+                <div class="card-value"><?= $totalBuku['total'] ?></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Buku Dipinjam</div>
+                <div class="card-value"><?= $dipinjam['total'] ?></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Buku Tersedia</div>
+                <div class="card-value"><?= $tersedia['total'] ?></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Buku Hilang</div>
+                <div class="card-value"><?= $hilang['total'] ?></div>
+            </div>
+        </div>
+
+        <div class="cover-books">
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 1">
+            </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 2">
+            </div>
+        </div>
     </main>
 </body>
 <script src="dashboard_admin/script.js"></script>
