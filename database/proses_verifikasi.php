@@ -24,7 +24,7 @@ if ($data) {
 
     session_destroy();
 
-    echo "Password berhasil diganti! <a href='../login_user'>Login</a>";
+    echo "<script>alert('Password berhasil diganti! Silakan login.'); window.location.href = '../login_user';</script>";
 
 } else {
     echo "Kode salah atau kadaluarsa!";

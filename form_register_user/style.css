@@ -207,3 +207,42 @@ form{
     display: flex;
     flex-direction: column;
 }
+
+.toggle-password i{
+    font-size: 25px;
+    color: #6b584c;
+    background: none;
+    border: none;
+}
+
+.fade-out-left {
+    animation: slideOutLeft 0.3s forwards;
+}
+
+.fade-out-up {
+    animation: slideOutUp 0.3s forwards;
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}

@@ -27,7 +27,9 @@
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <button>Log Out</button>
+            <a href="../login_admin" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+                <button>Log Out</button>
+            </a>
         </div>
     </header>
 

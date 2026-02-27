@@ -28,7 +28,9 @@
 
     <div class="right">
     <form action="../database/simpan-user.php" method="post">
-        <a href="../pemilihan_role" class="back-btn">→</a>
+        <a href="./" class="back-btn link-slide slide-left">
+            <i class="ph ph-arrow-bend-up-right"></i>
+        </a>
         <h3>Register</h3>
         <input placeholder="Nama Lengkap" id="nama" name="nama" required>
         <input placeholder="Email" id="email" name="email" type="email" required>
@@ -39,8 +41,8 @@
             </span>
         </div>
         <button type="submit">Daftar</button>
-        <p class="login-link">
-            Sudah punya akun? <a href="../login_user">Login</a>
+        <p class="login-link ">
+            Sudah punya akun? <a href="../login_user" class="link-slide slide-up">Login</a>
         </p>
     </form>
 

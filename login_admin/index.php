@@ -29,7 +29,7 @@
     <!-- KANAN -->
     <div class="right">
         <h2>Login</h2>
-        <a href="../pemilihan_role" class="back-btn link-slide slide-right">
+        <a href="./" class="back-btn link-slide slide-right">
             <i class="ph ph-arrow-bend-up-right"></i>
         </a>
         <form action="../database/proses_login_admin.php" method="post">

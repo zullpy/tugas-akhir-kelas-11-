@@ -5,13 +5,13 @@ document.querySelectorAll('.link-slide').forEach(link => {
         const href = this.href;
 
         // reset dulu
-        document.body.classList.remove('fade-out-left', 'fade-out-right');
+        document.body.classList.remove('fade-out-left', 'fade-out-up');
 
         // tentukan arah
         if (this.classList.contains('slide-left')) {
             document.body.classList.add('fade-out-left');
-        } else if (this.classList.contains('slide-right')) {
-            document.body.classList.add('fade-out-right');
+        } else if (this.classList.contains('slide-up')) {
+            document.body.classList.add('fade-out-up');
         }
 
         setTimeout(() => {

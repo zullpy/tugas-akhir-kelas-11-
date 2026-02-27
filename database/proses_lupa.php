@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../database/koneksi.php";
+include "koneksi.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -33,16 +33,16 @@ $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
+    $mail->Host       = 'smtp-relay.brevo.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'EMAILKAMU@gmail.com';
-    $mail->Password   = 'APP_PASSWORD_16_DIGIT';
-    $mail->SMTPSecure = 'tsl';
+    $mail->Username   = 'a37fe9001@smtp-brevo.com';
+    $mail->Password   = 'WDfvKCXZQdn63FOH';
+    $mail->SMTPSecure = 'false';
     $mail->Port       = 587;
     $mail->SMTPDebug = 2;
     $mail->Debugoutput = 'html';
 
-    $mail->setFrom('EMAILKAMU@gmail.com', 'Sistem Perpustakaan');
+    $mail->setFrom('emzul2424@gmail.com', 'Sistem Perpustakaan');
     $mail->addAddress($email);
 
     $mail->isHTML(true);
@@ -52,9 +52,9 @@ try {
     $mail->send();
 
     $_SESSION['reset_email'] = $email;
-    $_SESSION['new_password'] = password_hash($password_baru, PASSWORD_DEFAULT);
+    $_SESSION['new_password'] = $password_baru;
 
-    header("Location: verifikasi_kode.php");
+    header("Location:../test_lupaa/verifikasi.php");
     exit;
 
 } catch (Exception $e) {

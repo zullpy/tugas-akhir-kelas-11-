@@ -159,12 +159,12 @@ button {
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-.fade-out-left {
-    animation: slideOutLeft 0.3s forwards;
+.fade-out-down {
+    animation: slideOutDown 0.3s forwards;
 }
 
-.fade-out-right {
-    animation: slideOutRight 0.3s forwards;
+.fade-out-up {
+    animation: slideOutUp 0.3s forwards;
 }
 
 .password-wrapper {
@@ -190,26 +190,26 @@ button {
     color: #3b2f2a; 
 }
 
-@keyframes slideOutLeft {
+@keyframes slideOutDown {
     from {
-        transform: translateX(0);
+        transform: translateY(-100%);
         opacity: 1;
     }
 
     to {
-        transform: translateX(-100%);
+        transform: translateY(0);
         opacity: 0;
     }
 }
 
-@keyframes slideOutRight {
+@keyframes slideOutUp {
     from {
-        transform: translateX(0);
+        transform: translateY(0);
         opacity: 1;
     }
 
     to {
-        transform: translateX(100%);
+        transform: translateY(-100%);
         opacity: 0;
     }
 }

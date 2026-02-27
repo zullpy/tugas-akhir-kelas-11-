@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Peminjaman Buku</title>
-    <link rel="stylesheet" href="pemilihan_role/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./asset/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,6 @@
         </div>
     </div>
 </div>
-<script src="pemilihan_role/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

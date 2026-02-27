@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lupa password</title>
-    <link rel="stylesheet" href="lupa_pass_user/style.css">
+    <title>Lupa Password</title>
+    <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
         <link
         rel="stylesheet"
@@ -18,22 +16,17 @@
     />
 </head>
 <body>
-    <form action="../database/lupa_password_user.php" method="POST">
-        <input type="text" name="identifier" placeholder="Masukkan email atau username" required>
-        <input type="password" name="password_baru" placeholder="Password baru" required>
-        <input type="password" name="konfirmasi_password" placeholder="Ulangi password" required>
-        <button type="submit">Ganti Password</button>
-    </form>
-</body>
-<script src="lupa_pass_user/script.js"></script>
-</html>
+<a href="../login_user">
+    <i class="ph ph-arrow-bend-up-right"></i>
+</a>
+<h2>Lupa Password</h2>
 
-<?php if (isset($_GET['error'])): ?>
-<script>
-<?php if ($_GET['error'] === 'password'): ?>
-    alert('Password tidak sama');
-<?php elseif ($_GET['error'] === 'notfound'): ?>
-    alert('Email atau username tidak ditemukan');
-<?php endif; ?>
-</script>
-<?php endif; ?>
+<form action="../database/proses_lupa.php" method="post">
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <input type="password" name="password_baru" placeholder="Password Baru" required><br><br>
+    <input type="password" name="konfirmasi" placeholder="Ulangi Password" required><br><br>
+    <button type="submit">Kirim Kode</button>
+</form>
+
+</body>
+</html>

@@ -29,7 +29,7 @@
     <!-- KANAN -->
     <div class="right">
         <h2>Login</h2>
-        <a href="../pemilihan_role" class="back-btn link-slide slide-left">
+        <a href="../form_register_user" class="back-btn link-slide slide-down">
             <i class="ph ph-arrow-bend-up-right"></i>
         </a>
         <form action="../database/proses_login_user.php" method="post">
@@ -42,7 +42,7 @@
             </div>
             <button type="submit">Login</button>
         </form>
-        <a href="../lupa_pass_user" class="link-slide slide-right forget">Lupa password?</a>
+        <a href="../lupa_pass_user" class="link-slide slide-up forget">Lupa password?</a>
     </div>
 </div>
 </body>
