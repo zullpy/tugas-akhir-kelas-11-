@@ -32,11 +32,21 @@
     </header>
 
     <aside>
-        <i class="ph ph-book-open"></i><span>Dashboard</span>
-        <i class="ph ph-users"></i><span>Akun</span>
-        <i class="ph ph-books"></i><span>Data Buku</span>
-        <i class="ph ph-hand-arrow-down"></i><span>Peminjaman</span>
-        <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
+        <a href="../dashboard_admin">
+            <i class="ph ph-book-open"></i><span>Dashboard</span>
+        </a>
+        <a href="../data_akun/index.php">
+            <i class="ph ph-users"></i><span>Akun</span>
+        </a>
+        <a href="../data_buku">
+            <i class="ph ph-books"></i><span>Buku</span>
+        </a>
+        <a href="../peminjaman">
+            <i class="ph ph-hand-arrow-down"></i><span>Peminjaman</span>
+        </a>
+        <a href="../pengembalian">
+            <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
+        </a>
     </aside>
 
     <main>

@@ -18,30 +18,34 @@
     />
 </head>
 <body>
+<div class="login-card">
+
+    <div class="left">
+        <h2>Selamat datang!</h2>
+        <p>Buat akun untuk mulai menggunakan sistem peminjaman buku.</p>
+        <img src="../asset/buku2.png" class="illustration">
+    </div>
+
+    <div class="right">
     <form action="../database/simpan-user.php" method="post">
-        <h2>buat akun baru</h2>
-        <label for="nama">Nama Lengkap:</label>
-        <input type="text" id="nama" name="nama" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">password:</label>
-        <input type="password" id="password" name="password" required>
-
+        <a href="../pemilihan_role" class="back-btn">→</a>
+        <h3>Register</h3>
+        <input placeholder="Nama Lengkap" id="nama" name="nama" required>
+        <input placeholder="Email" id="email" name="email" type="email" required>
+        <div class="password-wrapper">
+            <input type="password" placeholder="Password" id="input-password" name="password" required>
+            <span class="toggle-password" >
+                <i class="ph ph-eye" id="togglePassword"></i>
+            </span>
+        </div>
         <button type="submit">Daftar</button>
-        <p class="footer-text">© SMKS SUKAPURA</p>
+        <p class="login-link">
+            Sudah punya akun? <a href="../login_user">Login</a>
+        </p>
     </form>
-        <p>
-        Sudah Memiliki Akun? 
-        <a href="../login_user" class="link-slide slide-right">
-            Login
-        </a>
-        <br>
-        <a href="../pemilihan_role" class="link-slide slide-left">
-            <i class="ph ph-arrow-circle-left"></i>
-        </a>
-    </p>
+
+</div>
+
 </body>
 <script src="form_register_user/script.js"></script>
 </html>

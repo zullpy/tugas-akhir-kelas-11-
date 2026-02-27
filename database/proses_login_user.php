@@ -17,21 +17,19 @@ $user = mysqli_fetch_assoc($result);
 if ($user) {
     // Cek password
 
-    if ($PASSWORD === $user['PASSWORD']) {
+    if ($PASSWORD === $user['password']) {
         $_SESSION['id'] = $user['id'];
         $_SESSION['nama'] = $user['nama'];
 
-        echo "<script>alert('login berhasil!'); window.location.href = '../dashboard_user/index.php';</script>";
+        echo "<script>alert('login berhasil!'); window.location.href = '../dashboard_user';</script>";
         exit;
         // header("Location: dashboard.php");
     } else {
-        echo "<script>alert('Password salah!'); window.location.href = '../login_user/index.php';</script>";
+        echo "<script>alert('Password salah!'); window.location.href = '../login_user';</script>";
         exit;
     }
 } else {
-    echo "<script>alert('Email tidak ditemukan!'); window.location.href = '../login_user/index.php';</script>";
+    echo "<script>alert('Email tidak ditemukan!'); window.location.href = '../login_user';</script>";
     exit;
     }
-
-
 ?>

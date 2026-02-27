@@ -22,19 +22,18 @@ if ($user) {
         $_SESSION['username'] = $user['username'];
 
         echo "<script>
-        alert('login berhasil!'); window.location.href = '../dashboard_admin/index.php';
+        alert('login berhasil!'); window.location.href = '../dashboard_admin';
         </script>";
         exit;
-        // header("Location: dashboard.php");
     } else {
         echo "<script>
-        alert('Password salah!'); window.location.href = '../login_admin/index.php';
+        alert('Password salah!'); window.location.href = '../login_admin';
         </script>";
         exit;
     }
 } else {
     echo "<script>
-    alert('Email tidak ditemukan!'); window.location.href = '../login_admin/index.php';
+    alert('Email tidak ditemukan!'); window.location.href = '../login_admin';
     </script>";
     exit;
     }

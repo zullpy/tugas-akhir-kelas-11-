@@ -167,6 +167,29 @@ button {
     animation: slideOutRight 0.3s forwards;
 }
 
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.password-wrapper i {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    font-size: 25px;
+    cursor: pointer;
+    color: #666;
+}
+
+.password-wrapper i:hover {
+    color: #3b2f2a; 
+}
+
 @keyframes slideOutLeft {
     from {
         transform: translateX(0);
@@ -242,4 +265,20 @@ button {
     button {
         width: 100%;
     }
+}
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 5px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }

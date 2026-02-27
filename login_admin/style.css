@@ -10,7 +10,6 @@ body {
     justify-content: center;
     align-items: center;
     font-family: "Open Sans", sans-serif;
-
     background: linear-gradient(
         to right,
         #4a3a30 50%,
@@ -26,13 +25,11 @@ body {
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-
     background: linear-gradient(
         to right,
         #5a4a3f 50%,
         #f6f1ec 50%
     );
-
     box-shadow: 0 25px 60px rgba(0,0,0,0.25);
 }
 
@@ -63,8 +60,8 @@ body {
 
 /* GAMBAR BUKU */
 .illustration {
-    width: 500px; /* lebih besar */
-    align-self: center; /* center horizontal */
+    width: 500px; 
+    align-self: center; 
     margin-top: 20px;
 }
 
@@ -119,15 +116,36 @@ button {
     position: absolute;
     top: 20px;
     right: 20px;
-
     background: #5a4a3f;
     color: white;
     font-size: 22px;
     padding: 10px 22px;
     border-radius: 40px;
     text-decoration: none;
-
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.password-wrapper i {
+    position: absolute;
+    top: 40%;
+    right: 5px;
+    transform: translateY(-50%);
+    font-size: 25px;
+    cursor: pointer;
+    color: #666;
+}
+
+.password-wrapper i:hover {
+    color: #3b2f2a; 
 }
 
 .fade-out-left {

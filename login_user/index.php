@@ -35,8 +35,11 @@
         <form action="../database/proses_login_user.php" method="post">
             <label>Email</label>
             <input type="text" name="identifier" required>
-            <label>Password</label>
-            <input type="password" name="password" required>
+
+            <div class="password-wrapper">
+                <label>Password</label><input type="password" id="input-password">
+                <i class="ph ph-eye" id="togglePassword"></i>
+            </div>
             <button type="submit">Login</button>
         </form>
         <a href="../lupa_pass_user" class="link-slide slide-right forget">Lupa password?</a>

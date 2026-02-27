@@ -1,0 +1,32 @@
+<?php
+session_start();
+include "../database/koneksi.php";
+
+$email = $_SESSION['reset_email'];
+$password_hash = $_SESSION['new_password'];
+$kode = $_POST['kode'];
+
+$query = mysqli_query($koneksi,
+"SELECT * FROM users 
+ WHERE email='$email' 
+ AND reset_code='$kode'
+ AND reset_expired > NOW()");
+
+$data = mysqli_fetch_assoc($query);
+
+if ($data) {
+
+    mysqli_query($koneksi, "UPDATE users SET 
+    password='$password_hash',
+    reset_code=NULL,
+    reset_expired=NULL
+    WHERE email='$email'");
+
+    session_destroy();
+
+    echo "Password berhasil diganti! <a href='../login_user'>Login</a>";
+
+} else {
+    echo "Kode salah atau kadaluarsa!";
+}
+?>

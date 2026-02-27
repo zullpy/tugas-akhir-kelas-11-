@@ -36,10 +36,12 @@
             <label>Email</label>
             <input type="text" name="identifier" id="input-identifier" required>
             <label>Password</label>
-            <input type="password" name="password" id="input-password" required>
+            <div class="password-wrapper">
+                <input type="password" name="password" id="input-password" required>
+                <i class="ph ph-eye" id="togglePassword"></i>
+            </div>
             <button type="submit">Login</button>
         </form>
-        <a href="../lupa_pass_admin" class="link-slide slide-left forget">Lupa password?</a>
     </div>
 </div>
 
