@@ -54,7 +54,7 @@ try {
     $_SESSION['reset_email'] = $email;
     $_SESSION['new_password'] = $password_baru;
 
-    header("Location:../test_lupaa/verifikasi.php");
+    header("Location:../lupa_pass_user/verifikasi.php");
     exit;
 
 } catch (Exception $e) {

@@ -208,11 +208,33 @@ form{
     flex-direction: column;
 }
 
+input:focus{
+    outline: none;
+}
+
 .toggle-password i{
     font-size: 25px;
     color: #6b584c;
     background: none;
     border: none;
+}
+
+.pilihan{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.pilihan select{
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #8b7b70;
+    background: transparent;
+}
+
+.pilihan select:focus{
+    outline: none;
 }
 
 .fade-out-left {

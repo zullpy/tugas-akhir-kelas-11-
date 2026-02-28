@@ -37,16 +37,16 @@
         <a href="../dashboard_admin">
             <i class="ph ph-book-open"></i><span>Dashboard</span>
         </a>
-        <a href="../data_akun/index.php">
+        <a href="../data_akun">
             <i class="ph ph-users"></i><span>Akun</span>
         </a>
-        <a href="../data_buku">
+        <a href="../data_buku_admin">
             <i class="ph ph-books"></i><span>Buku</span>
         </a>
-        <a href="../peminjaman">
+        <a href="../peminjaman_admin">
             <i class="ph ph-hand-arrow-down"></i><span>Peminjaman</span>
         </a>
-        <a href="../pengembalian">
+        <a href="../pengembalian_admin">
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
     </aside>

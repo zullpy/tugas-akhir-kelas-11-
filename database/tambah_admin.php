@@ -12,5 +12,6 @@ $stmt = mysqli_prepare($koneksi, $query);
 mysqli_stmt_bind_param($stmt, "sss", $username, $email, $password);
 mysqli_stmt_execute($stmt);
 
-header("Location: ../data_akun/index.php");
+header("Location: ../data_akun");
 exit;
+?>

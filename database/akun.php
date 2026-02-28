@@ -7,6 +7,8 @@ $query = "
         username,
         email,
         role,
+        '' AS kelas,
+        '' AS jurusan,
         'admin' AS sumber
     FROM admin
 
@@ -17,6 +19,8 @@ $query = "
         username,
         email,
         role,
+        kelas,
+        jurusan,
         'user' AS sumber
     FROM users
 ";

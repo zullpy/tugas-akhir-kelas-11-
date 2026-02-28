@@ -7,10 +7,10 @@ $password_hash = $_SESSION['new_password'];
 $kode = $_POST['kode'];
 
 $query = mysqli_query($koneksi,
-"SELECT * FROM users 
- WHERE email='$email' 
- AND reset_code='$kode'
- AND reset_expired > NOW()");
+    "SELECT * FROM users 
+    WHERE email='$email' 
+    AND reset_code='$kode'
+    AND reset_expired > NOW()");
 
 $data = mysqli_fetch_assoc($query);
 
@@ -27,6 +27,6 @@ if ($data) {
     echo "<script>alert('Password berhasil diganti! Silakan login.'); window.location.href = '../login_user';</script>";
 
 } else {
-    echo "Kode salah atau kadaluarsa!";
+    echo "<script>alert('Kode OTP salah atau sudah expired!'); window.location.href = '../lupa_pass_user/verifikasi.php';</script>";
 }
 ?>
