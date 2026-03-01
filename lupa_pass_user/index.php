@@ -2,9 +2,9 @@
 <html>
 <head>
     <title>Lupa Password</title>
+    <link rel="stylesheet" href="lupa_pass_user/style.css">
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
-        <link
+    <link
         rel="stylesheet"
         type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"

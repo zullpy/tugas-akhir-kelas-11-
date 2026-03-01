@@ -100,7 +100,7 @@ include '../database/akun.php';
         
         <div class="add">
             <a href="" id="btnTambahAdmin">
-                <i class="ph ph-plus"></i> Tambah Akun Admin
+                <i class="ph ph-user-plus"></i> Tambah Akun Admin
             </a>
         </div>
     </div>
