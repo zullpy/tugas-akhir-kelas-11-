@@ -1,3 +1,6 @@
+<?php
+include '../database/dashboard.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +58,7 @@
         <div class="data-buku">
             <div class="card">
                 <div class="card-title">Jumlah Akun</div>
-                <div class="card-value"><?= $akun['total'] ?></div>
+                <div class="card-value"><?= $totalAkun['total'] ?></div>
             </div>
 
             <div class="card">

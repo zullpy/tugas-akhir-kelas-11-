@@ -107,8 +107,19 @@ if(!$buku){
                     <td><?= $data['no_wa']; ?></td>
                     <td><?= $data['status']; ?></td>
                     <td>
-                        <a href="../edit_peminjaman_admin?id=<?= $data['id_peminjaman']; ?>"><i class="ph ph-pencil"></i></a>
-                        <a href="../hapus_peminjaman_admin?id=<?= $data['id_peminjaman']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="ph ph-trash-simple"></i></a>
+                    <a href="#" class="btnEdit"
+                            data-id="<?= $data['id_peminjaman']; ?>"
+                            data-user="<?= $data['nama_peminjam']; ?>"
+                            data-buku="<?= $data['judul']; ?>"
+                            data-pinjam="<?= $data['tanggal_pinjam']; ?>"
+                            data-kembali="<?= $data['tanggal_kembali']; ?>"
+                            data-wa="<?= $data['no_wa']; ?>"
+                            data-status="<?= $data['status']; ?>">
+                        <i class="ph ph-pencil"></i>
+                    </a>
+                        <a href="../database/hapus_peminjaman.php?id=<?= $data['id_peminjaman']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                            <i class="ph ph-trash-simple"></i>
+                        </a>
                         <?php if($data['status'] == 'dipinjam'){ ?>
                             <a href="../database/proses_kembali.php?id=<?= $data['id_peminjaman']; ?>" 
                                 onclick="return confirm('Yakin mau kembalikan buku?')">
@@ -138,7 +149,6 @@ if(!$buku){
             <!-- PILIH BUKU -->
             <div class="form-group">
                 <select name="id_buku" required>
-                    <option value="">-- Pilih Buku --</option>
                     <?php while($b = mysqli_fetch_assoc($buku)) { ?>
                         <option value="<?= $b['id_buku']; ?>">
                             <?= $b['judul']; ?>
@@ -177,6 +187,54 @@ if(!$buku){
         </form>
     </div>
 </div>
+
+<div id="modalEdit" class="modal">
+    <div class="modal-content">
+        <span id="closeModal2">&times;</span>
+            <h3>Edit Peminjaman</h3>
+                <form method="POST" action="../database/update_peminjaman.php">
+                    <input type="hidden" name="id" id="edit_id">
+
+                    Nama:
+                    <select name="id_user" id="edit_user">
+                        <option value='pilih peminjam'>-- Pilih Peminjam --</option>
+                        <?php
+                        $u = mysqli_query($koneksi, "SELECT * FROM users");
+                        while($user = mysqli_fetch_assoc($u)){
+                            echo "
+                            <option value='{$user['id_user']}'>{$user['username']}</option>";
+                        }
+                        ?>
+                    </select>
+                    <br>
+                    <br>
+
+                    Judul Buku:
+                    <select name="id_buku" id="edit_buku">
+                        <?php
+                        $b = mysqli_query($koneksi, "SELECT * FROM buku WHERE status!='nonaktif'");
+                        while($buku = mysqli_fetch_assoc($b)){
+                            echo "<option value='{$buku['id_buku']}'>{$buku['judul']}</option>";
+                        }
+                        ?>
+                    </select>
+                    <br>
+                    <br>
+
+                    Tanggal Pinjam:
+                    <input type="date" name="tgl_pinjam" id="edit_pinjam"><br><br>
+
+                    Tanggal Kembali:
+                    <input type="date" name="tgl_kembali" id="edit_kembali"><br><br>
+
+                    No WA:
+                    <input type="text" name="no_wa" id="edit_wa"><br><br>
+
+                    <button type="submit">Update</button>
+                </form>
+    </div>
+</div>
+
 </body>
 <script src="peminjaman_admin/script.js"></script>
 </html>

@@ -3,7 +3,7 @@ session_start();
 include 'koneksi.php';
 
 $identifier = $_POST['identifier'];
-$PASSWORD = $_POST['password'];
+$PASSWORD = $_POST['password']; 
 
 // Ambil data user berdasarkan email atau username
 $query = "SELECT * FROM admin WHERE email=? OR username=?";

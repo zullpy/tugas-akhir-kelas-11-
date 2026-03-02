@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../database/koneksi.php";
+include "koneksi.php";
 
 $email = $_SESSION['reset_email'];
 $password_hash = $_SESSION['new_password'];

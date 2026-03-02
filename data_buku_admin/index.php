@@ -95,12 +95,28 @@
                 include '../database/koneksi.php';
                 if (isset($_GET['hapus'])) {
                     $id = intval($_GET['hapus']);
-                    $delete = mysqli_prepare($koneksi, "DELETE FROM buku WHERE id_buku = ?");
-                    mysqli_stmt_bind_param($delete, "i", $id);
-                    mysqli_stmt_execute($delete);
 
-                    header("Location: data_buku_admin");
-                exit;
+                    $cek = mysqli_prepare($koneksi, 
+                        "SELECT id_buku FROM peminjaman WHERE id_buku = ? AND status = 'dipinjam' LIMIT 1");
+                        mysqli_stmt_bind_param($cek, "i", $id);
+                        mysqli_stmt_execute($cek);
+                        mysqli_stmt_store_result($cek);
+
+                if (mysqli_stmt_num_rows($cek) > 0) {
+                echo "<script>
+                    alert('Buku masih dipinjam! Tidak bisa dinonaktifkan.');
+                    window.location='data_buku_admin';
+                </script>";
+                } else {
+                    $update = mysqli_prepare($koneksi,
+                    "UPDATE buku SET status = 'nonaktif' WHERE id_buku = ?");
+                    mysqli_stmt_bind_param($update, "i", $id);
+                    mysqli_stmt_execute($update);
+                    echo "<script>
+                        alert('Buku berhasil dinonaktifkan.');
+                        window.location='data_buku_admin';
+                    </script>";
+                }
                 }
                 $where = [];
                 if (!empty($_GET['jenis'])) {
@@ -113,10 +129,10 @@
                     $where[] = "status = '$status'";
                 }
 
-                $query = "SELECT * FROM buku";
+                $query = "SELECT * FROM buku WHERE status != 'nonaktif'";
 
                 if (!empty($where)) {
-                    $query .= " WHERE " . implode(" AND ", $where);
+                    $query .= " AND " . implode(" AND ", $where);
                 }
 
                 $result = mysqli_query($koneksi, $query);
