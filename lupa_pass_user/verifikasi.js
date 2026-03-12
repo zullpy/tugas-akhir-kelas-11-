@@ -1,4 +1,4 @@
- const inputs = document.querySelectorAll(".otp-input");
+    const inputs = document.querySelectorAll(".otp-input");
     const hiddenInput = document.getElementById("kode");
 
     inputs.forEach((input, index) => {
@@ -29,3 +29,14 @@
         });
         hiddenInput.value = kode;
     }
+
+    const warningBox = document.getElementById("warningBox");
+
+    document.querySelector("form").addEventListener("submit", function(e){
+        if(hiddenInput.value.length !== 6){
+            e.preventDefault();
+            warningBox.style.display = "block";
+        } else {
+            warningBox.style.display = "none";
+        }
+    });

@@ -148,23 +148,13 @@ button {
     position: absolute;
     top: 20px;
     right: 20px;
-
     background: #5a4a3f;
     color: white;
     font-size: 22px;
     padding: 10px 22px;
     border-radius: 40px;
     text-decoration: none;
-
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.fade-out-down {
-    animation: slideOutDown 0.3s forwards;
-}
-
-.fade-out-up {
-    animation: slideOutUp 0.3s forwards;
 }
 
 .password-wrapper {
@@ -188,6 +178,14 @@ button {
 
 .password-wrapper i:hover {
     color: #3b2f2a; 
+}
+
+.fade-out-down {
+    animation: slideOutDown 0.3s forwards;
+}
+
+.fade-out-up {
+    animation: slideOutUp 0.3s forwards;
 }
 
 @keyframes slideOutDown {

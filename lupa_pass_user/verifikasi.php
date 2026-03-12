@@ -6,12 +6,9 @@
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
-<h2>Masukkan Kode OTP</h2>
-
-<form action="../database/proses_verifikasi.php" method="post">
-    
-    <div class="otp-container">
+    <form action="../database/proses_verifikasi.php" method="post">
+        <h2>Masukkan Kode OTP</h2>
+        <div class="otp-container">
         <input type="text" maxlength="1" class="otp-input">
         <input type="text" maxlength="1" class="otp-input">
         <input type="text" maxlength="1" class="otp-input">
@@ -25,6 +22,14 @@
 
     <br><br>
     <button type="submit">Verifikasi</button>
+
+    <div class="warning-box" id="warningBox">
+    Kode OTP harus 6 digit!
+</div>
+
+<div class="success-box" id="successBox">
+    ✔ OTP berhasil diverifikasi.
+</div>
 </form>
 
 </body>
