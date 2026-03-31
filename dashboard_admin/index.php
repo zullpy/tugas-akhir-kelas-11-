@@ -115,5 +115,6 @@ include '../database/dashboard.php';
             </div>
     </main>
 </body>
+
 <script src="dashboard_admin/script.js"></script>
 </html>

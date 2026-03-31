@@ -21,25 +21,20 @@ include '../database/akun.php';
     />
 </head>
 <body>
-    <div class="wrapper-card">
-        <div class="card">
-            <h4 class="card-title">Jumlah Akun</h4>
-            <p class="card-value"><?= $akun['total'] ?></p>
-            <img src="../asset/people3." alt="" class="card-image">
+    <header>
+        <div class="logo-right">
+            <img src="../asset/logo.png" alt="logo">
+            <h3>Sistem Peminjaman Buku
+            <br><span>SMKS Sukapura</span></h3>
         </div>
 
-        <div class="card">
-            <h4 class="card-title">Akun Admin</h4>
-            <p class="card-value"><?= $akun_admin['total'] ?></p>
-            <img src="../asset/people2." alt="" class="card-image">
+        <div class="left">
+            <h2>selamat datang admin!!</h2>
+            <a href="../login_admin" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+                <button>Log Out</button>
+            </a>
         </div>
-
-        <div class="card">
-            <h4 class="card-title">Akun User</h4>
-            <p class="card-value"><?= $akun_user['total'] ?></p>
-            <img src="../asset/people." alt="" class="card-image">
-        </div>
-    </div>
+    </header>
 
     <aside>
         <a href="../dashboard_admin">

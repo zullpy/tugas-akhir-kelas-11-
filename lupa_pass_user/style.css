@@ -93,11 +93,28 @@ form {
 .input-group i {
     position: absolute;
     top: 50%;
-    left: 10px;
     transform: translateY(-50%);
     color: #5c4438;
     font-size: 18px;
 }
+
+/* Ikon kunci di kiri, ikon eye di kanan */
+.input-group i.ph-lock,
+.input-group i.ph-lock-key,
+.input-group i.ph-user {
+    left: 10px;
+}
+
+.input-group i.ph-eye {
+    right: 10px;
+    left: auto;
+    cursor: pointer;
+}
+
+.input-group input {
+    padding-right: 40px;
+}
+
 
 .input-group input {
     width: 100%;
@@ -206,3 +223,4 @@ button:hover {
         transform: translateY(0);
     }
 }
+

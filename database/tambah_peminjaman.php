@@ -10,6 +10,14 @@ $no_wa = $_POST['no_wa'];
 $koneksi->begin_transaction();
 
 try {
+    $cek = $koneksi->prepare("SELECT stok FROM buku WHERE id_buku = ?");
+$cek->bind_param("i", $id_buku);
+$cek->execute();
+$data = $cek->get_result()->fetch_assoc();
+
+if ($data['stok'] <= 0) {
+    die("Stok habis!");
+}
 
     // 1. insert ke tabel peminjaman
     $insert = $koneksi->prepare("INSERT INTO peminjaman 
@@ -19,19 +27,16 @@ try {
     $insert->bind_param("iisss", $id_user, $id_buku, $tgl_pinjam, $tgl_kembali, $no_wa);
     $insert->execute();
 
-    // 2. kurangi stok buku
-    $updateStok = $koneksi->prepare("UPDATE buku SET stok = stok - 1 WHERE id_buku = ?");
-    $updateStok->bind_param("i", $id_buku);
-    $updateStok->execute();
-
-    // 3. ubah status kalau stok habis
-    $updateStatus = $koneksi->prepare("
-        UPDATE buku 
-        SET status = 'dipinjam' 
-        WHERE id_buku = ? AND stok <= 0
-    ");
-    $updateStatus->bind_param("i", $id_buku);
-    $updateStatus->execute();
+    // 🔥 update stok + status sekaligus
+$updateBuku = $koneksi->prepare("
+    UPDATE buku 
+    SET 
+        stok = stok - 1,
+        status = IF(stok - 1 <= 0, 'dipinjam', 'tersedia')
+    WHERE id_buku = ?
+");
+$updateBuku->bind_param("i", $id_buku);
+$updateBuku->execute();
 
     $koneksi->commit();
     echo "Berhasil pinjam";

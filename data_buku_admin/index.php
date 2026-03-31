@@ -21,8 +21,8 @@
     <header>
         <div class="logo-right">
             <img src="../asset/logo.png" alt="logo">
-            <h3>Sistem Peminjaman Buku</h3>
-            <h3>SMKS Sukapura</h3>
+            <h3>Sistem Peminjaman Buku
+            <br><span>SMKS Sukapura</span></h3>
         </div>
 
         <div class="left">
@@ -32,6 +32,7 @@
             </a>
         </div>
     </header>
+
 
     <aside>
         <a href="../dashboard_admin">

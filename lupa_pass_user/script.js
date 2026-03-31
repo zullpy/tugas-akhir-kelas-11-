@@ -19,3 +19,22 @@ document.querySelectorAll('.link-slide').forEach(link => {
         }, 300);
     });
 });
+
+// Toggle password visibility   
+const togglePassword = document.querySelector('#togglePassword');
+const passwordField = document.querySelector('input[name="konfirmasi"]');
+
+togglePassword.addEventListener('click', function () {
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    this.classList.toggle('ph-eye-slash');
+});
+
+const togglePasswordBaru = document.querySelector('#togglePasswordBaru');
+const passwordBaruField = document.querySelector('input[name="password_baru"]');
+
+togglePasswordBaru.addEventListener('click', function () {
+    const type = passwordBaruField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordBaruField.setAttribute('type', type);
+    this.classList.toggle('ph-eye-slash');
+});

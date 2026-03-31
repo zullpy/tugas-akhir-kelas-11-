@@ -46,7 +46,7 @@ try {
     $mail->addAddress($email);
 
     $mail->isHTML(true);
-    $mail->Subject = 'Kode Reset Password';
+    $mail->Subject = 'Kode Reset Password Peminjaman Buku';
     $mail->Body    = "<h2>Kode reset password kamu:</h2><h1>$kode</h1>";
 
     $mail->send();

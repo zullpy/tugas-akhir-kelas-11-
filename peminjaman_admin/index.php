@@ -49,8 +49,8 @@ if(!$buku){
     <header>
         <div class="logo-right">
             <img src="../asset/logo.png" alt="logo">
-            <h3>Sistem Peminjaman Buku</h3>
-            <h3>SMKS Sukapura</h3>
+            <h3>Sistem Peminjaman Buku
+            <br><span>SMKS Sukapura</span></h3>
         </div>
 
         <div class="left">
@@ -60,6 +60,7 @@ if(!$buku){
             </a>
         </div>
     </header>
+
 
     <aside>
         <a href="../dashboard_admin">
@@ -79,11 +80,10 @@ if(!$buku){
         </a>
     </aside>
 
+    <main>
     <div class="button-wrapper" id="btnTambahPeminjaman">
             <i class="ph ph-plus"></i> Tambah Data Peminjaman
     </div>
-
-    <main>
         <table cellspacing="0" cellpadding="10" border="1">
             <thead>
                 <tr>
@@ -136,8 +136,8 @@ if(!$buku){
             </tbody>
         </table>
     </main>
-
-        
+    
+    
 
 <div class="modal" id="modalBuku">
     <div class="modal-content">
@@ -170,7 +170,7 @@ if(!$buku){
             </div>
 
             <div class="form-group">
-                <input type="date" name="tanggal_pinjam" required>
+                <input type="date" name="tanggal_pinjam" value="<?= date('Y-m-d') ?>">
             </div>
 
             <div class="form-group">

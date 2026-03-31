@@ -102,3 +102,143 @@
     cursor: pointer;
 }
 
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY GRID */
+body {
+    background: #f5f6fa;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas: 
+        "header header"
+        "aside main";
+
+    min-height: 100vh;
+    gap: 0;
+}
+
+/* ================= HEADER ================= */
+header {
+    grid-area: header;
+    background: #fffefe;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 15px;
+    position: relative;
+}
+
+/* MENU ICON */
+.menu-icon i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* LOGO */
+.logo-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-right img {
+    width: 60px;
+}
+
+.logo-right h3 {
+    font-size: 15px;
+    line-height: 1.3;
+    color: black;
+}
+
+.logo-right h3 span {
+    font-size: 12px;
+    color: #555;
+}
+
+/* TITLE TENGAH */
+header h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: black;
+}
+
+/* ================= RIGHT (WELCOME + LOGOUT) ================= */
+.left {
+    display: flex;
+    align-items: center;
+    background-color: #f3cfcf;
+    padding: 5px 15px;
+    border-radius: 20px;
+    gap: 6px;
+}
+
+.left h2 {
+    font-size: 13px;
+    color: black;
+    position: relative;
+    margin-right: 100px;
+}
+
+.left h2 span {
+    font-weight: bold;
+}
+
+.left button {
+    background: #e74c3c;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* ================= SIDEBAR ================= */
+aside {
+    grid-area: aside;
+    background: #8fb6d8;
+    padding: 15px 10px;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+/* MENU */
+aside a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+aside a:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+aside a.active {
+    background: white;
+    color: #5a8bb0;
+    font-weight: 600;
+}
+
+aside i {
+    font-size: 20px;
+}

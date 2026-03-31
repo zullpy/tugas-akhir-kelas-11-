@@ -48,13 +48,15 @@
             <i class="ph ph-lock"></i>
             <input type="password" name="password_baru"
                 placeholder="Password baru" required>
-        </div>
+                <i class="ph ph-eye" id="togglePasswordBaru" style="cursor: pointer;"></i>
+            </div>
 
         <div class="input-group">
             <i class="ph ph-lock-key"></i>
             <input type="password" name="konfirmasi"
                 placeholder="Ulangi password" required>
-        </div>
+                <i class="ph ph-eye" id="togglePassword" style="cursor: pointer;"></i>
+            </div>
 
         <button type="submit">Ganti Password</button>
 
