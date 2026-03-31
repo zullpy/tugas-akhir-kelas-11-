@@ -24,8 +24,8 @@ include '../database/dashboard.php';
     <header>
         <div class="logo-right">
             <img src="../asset/logo.png" alt="logo">
-            <h3>Sistem Peminjaman Buku</h3>
-            <h3>SMKS Sukapura</h3>
+            <h3>Sistem Peminjaman Buku
+            <br><span>SMKS Sukapura</span></h3>
         </div>
 
         <div class="left">
@@ -89,7 +89,30 @@ include '../database/dashboard.php';
             <div class="cover-book">
                 <img src="../asset/cover1.avif" alt="cover buku 2">
             </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 3">
+            </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 4">
+            </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 5">
+            </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 6">
+            </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 7">
+            </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 8">
         </div>
+        <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 9">
+            </div>
+            <div class="cover-book">
+                <img src="../asset/cover1.avif" alt="cover buku 10">
+            </div>
     </main>
 </body>
 <script src="dashboard_admin/script.js"></script>

@@ -19,7 +19,7 @@
     />
 </head>
 <body>
-    <form action="../database/lupa_password_user.php" method="POST">
+    <form action="../database/proses_lupa.php" method="POST">
     
     <div class="form-left">
         <h2>Lupa Password?</h2>
@@ -31,7 +31,7 @@
     </div>
     
     <div class="form-right">
-        <div class="back-btn link-slide slide-up">
+        <div class="back-btn link-slide slide-down">
             <a href="../login_user">
                 <i class="ph ph-arrow-bend-up-right"></i>
             </a>
@@ -52,7 +52,7 @@
 
         <div class="input-group">
             <i class="ph ph-lock-key"></i>
-            <input type="password" name="konfirmasi_password"
+            <input type="password" name="konfirmasi"
                 placeholder="Ulangi password" required>
         </div>
 
@@ -62,5 +62,5 @@
 
 </form>
 </body>
-<script src="script.js"></script>
+<script src="lupa_pass_user/script.js"></script>
 </html>

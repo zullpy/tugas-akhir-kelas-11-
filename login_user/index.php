@@ -37,7 +37,7 @@
             <input type="text" name="identifier" required>
 
             <div class="password-wrapper">
-                <label>Password</label><input type="password" id="input-password">
+                <label>Password</label><input type="password" id="input-password" name="password" >
                 <i class="ph ph-eye" id="togglePassword"></i>
             </div>
             <button type="submit">Login</button>

@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php'; // pakai composer
 
-$email = $_POST['email'];
+$email = $_POST['identifier'];
 $password_baru = $_POST['password_baru'];
 $konfirmasi = $_POST['konfirmasi'];
 

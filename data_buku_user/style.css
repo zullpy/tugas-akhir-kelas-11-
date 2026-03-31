@@ -1,0 +1,129 @@
+.filter-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#btnFilter {
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.filter-box {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0px; /* geser ke samping icon */
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.filter-box.show {
+    display: block;
+}
+
+/* Modal background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+/* Modal box */
+.modal-content {
+    background: #fff;
+    text-align: center;
+    width: 400px;
+    padding: 20px;
+    margin: 100px auto;
+    border-radius: 8px;
+    position: relative;
+    animation: muncul 0.3s ease;
+}
+
+@keyframes muncul {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #8b7b70;
+    background: transparent;
+}
+
+.form-group input:focus {
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: #6b584c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.btn-submit:hover {
+    background: #8b7b70;
+}
+
+.modal2 {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal2.show {
+    display: flex;
+}
+
+.modal-content2 {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    animation: muncul 0.7s ease;
+}
+
+.edit, .hapus {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}  
+
+.hapus {
+    color: #c0392b;
+}
+
+.hapus-link {
+    text-decoration: none;
+    color: inherit;
+}
+

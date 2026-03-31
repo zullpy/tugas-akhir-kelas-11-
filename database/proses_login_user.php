@@ -17,9 +17,9 @@ $user = mysqli_fetch_assoc($result);
 if ($user) {
     // Cek password
 
-    if ($PASSWORD === $user['password']) {
-        $_SESSION['id'] = $user['id'];
-        $_SESSION['nama'] = $user['nama'];
+    if ($PASSWORD === $user['PASSWORD']) {
+        $_SESSION['id_user'] = $user['id_user'];
+        $_SESSION['username'] = $user['username'];
 
         echo "<script>alert('login berhasil!'); window.location.href = '../dashboard_user';</script>";
         exit;
