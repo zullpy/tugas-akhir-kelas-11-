@@ -27,7 +27,7 @@
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../login_admin" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <a href="../" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
                 <button>Log Out</button>
             </a>
         </div>
@@ -47,7 +47,7 @@
         <a href="../peminjaman_admin">
             <i class="ph ph-hand-arrow-down"></i><span>Peminjaman</span>
         </a>
-        <a href="../pengembalian_admin">
+        <a href="../pengembalian_admin" class="active">
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
     </aside>

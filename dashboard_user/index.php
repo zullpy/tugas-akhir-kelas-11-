@@ -25,20 +25,21 @@ include '../database/dashboard.php';
     <header>
         <div class="logo-right">
             <img src="../asset/logo.png" alt="logo">
-            <h3>Sistem Peminjaman Buku</h3>
-            <h3>SMKS Sukapura</h3>
+            <h3>Sistem Peminjaman Buku
+            <br><span>SMKS Sukapura</span></h3>
         </div>
 
         <div class="left">
-            <h2>Selamat datang <?= isset($_SESSION['username']) ? ', ' . htmlspecialchars($_SESSION['username']) : '' ?>!</h2>
-            <a href="../login_user" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <h2>selamat datang <?= $_SESSION['username'] ?>!!</h2>
+            <a href="../" 
+            onclick="return confirm('Apakah Anda yakin ingin keluar?')">
                 <button>Log Out</button>
             </a>
         </div>
     </header>
 
     <aside>
-        <a href="../dashboard_user">
+        <a href="../dashboard_user" class="active">
             <i class="ph ph-book-open"></i><span>Dashboard</span>
         </a>
         <a href="../data_buku_user">
@@ -52,10 +53,35 @@ include '../database/dashboard.php';
         </a>
     </aside>
 
-        <div class="cover-books">
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 1">
+    <main>
+        <div class="data-buku">
+            <div class="card">
+                <div class="card-title">Total Buku</div>
+                <div class="card-value"><?= $totalBuku['total'] ?></div>
             </div>
+
+            <div class="card">
+                <div class="card-title">Buku Dipinjam</div>
+                <div class="card-value"><?= $dipinjam['total'] ?></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Buku Tersedia</div>
+                <div class="card-value"><?= $tersedia['total'] ?></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Buku Hilang</div>
+                <div class="card-value"><?= $hilang['total'] ?></div>
+            </div>
+        </div>
+
+        <div class="cover-books">
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <div class="cover-book">
+                    <img src="../upload/<?= $row['cover'] ?: 'default.jpg' ?>" width="120">
+                </div>
+            <?php } ?>
             <div class="cover-book">
                 <img src="../asset/cover1.avif" alt="cover buku 2">
             </div>

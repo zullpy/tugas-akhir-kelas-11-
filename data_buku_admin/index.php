@@ -27,7 +27,8 @@
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../login_admin" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <a href="../" 
+                onclick="return confirm('Apakah Anda yakin ingin keluar?')">
                 <button>Log Out</button>
             </a>
         </div>
@@ -38,10 +39,10 @@
         <a href="../dashboard_admin">
             <i class="ph ph-book-open"></i><span>Dashboard</span>
         </a>
-        <a href="../data_akun">
+        <a href="../data_akun" >
             <i class="ph ph-users"></i><span>Akun</span>
         </a>
-        <a href="../data_buku_admin">
+        <a href="../data_buku_admin" class="active">
             <i class="ph ph-books"></i><span>Buku</span>
         </a>
         <a href="../peminjaman_admin">
@@ -175,7 +176,11 @@
         <span class="close" id="closeModal">&times;</span>
         <h3>Tambah Buku</h3>
 
-        <form action="../database/tambah_buku.php" method="POST">
+        <form action="../database/tambah_buku.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="cover" placeholder="Cover Buku" required>
+            </div>
+
             <div class="form-group">
                 <input type="text" name="judul" placeholder="Judul Buku" required>
             </div>

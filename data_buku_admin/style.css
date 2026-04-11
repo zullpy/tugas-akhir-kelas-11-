@@ -127,7 +127,11 @@
     color: inherit;
 }
 
-/* RESET */
+:root {
+    --primary-color: #C7A789;
+    --secondary-color: #F3ECE6;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -203,17 +207,16 @@ header h2 {
 .left {
     display: flex;
     align-items: center;
-    background-color: #f3cfcf;
     padding: 5px 15px;
     border-radius: 20px;
     gap: 6px;
 }
 
 .left h2 {
-    font-size: 13px;
-    color: black;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
     position: relative;
-    margin-right: 100px;
+    margin-right: 70px;
 }
 
 .left h2 span {
@@ -221,7 +224,7 @@ header h2 {
 }
 
 .left button {
-    background: #e74c3c;
+    background: #eb5747;
     border: none;
     padding: 5px 10px;
     border-radius: 15px;
@@ -233,9 +236,9 @@ header h2 {
 /* ================= SIDEBAR ================= */
 aside {
     grid-area: aside;
-    background: #8fb6d8;
+    background: var(--primary-color);
     padding: 15px 10px;
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 20px 0px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -260,10 +263,20 @@ aside a:hover {
 
 aside a.active {
     background: white;
-    color: #5a8bb0;
+    color: var(--primary-color);
     font-weight: 600;
 }
 
 aside i {
     font-size: 20px;
+}
+
+
+main {
+    grid-area: main;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #F3ECE6;
 }

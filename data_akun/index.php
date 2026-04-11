@@ -30,7 +30,7 @@ include '../database/akun.php';
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../login_admin" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <a href="../" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
                 <button>Log Out</button>
             </a>
         </div>
@@ -40,7 +40,7 @@ include '../database/akun.php';
         <a href="../dashboard_admin">
             <i class="ph ph-book-open"></i><span>Dashboard</span>
         </a>
-        <a href="../data_akun">
+        <a href="../data_akun" class="active">
             <i class="ph ph-users"></i><span>Akun</span>
         </a>
         <a href="../data_buku_admin">
@@ -53,8 +53,35 @@ include '../database/akun.php';
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
     </aside>
+    
+    <div class="main">
+        <div class="data-buku">
+            <div class="card">
+                <div class="card-title">Jumlah Akun</div>
+                <div class="card-value"><?= $akun['total'] ?></div>
+                <div class="image">
+                    <img src="../asset/people.png" alt="icon akun">
+                </div>
+            </div>
 
-    <div class="table-akun">
+            <div class="card">
+                <div class="card-title">Total Admin</div>
+                <div class="card-value"><?= $akun_admin['total'] ?></div>
+                <div class="image">
+                    <img src="../asset/people2.png" alt="icon akun">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Total User</div>
+                <div class="card-value"><?= $akun_user['total'] ?></div>
+                <div class="image">
+                    <img src="../asset/people3.png" alt="icon akun">
+                </div>
+            </div>
+        </div>
+    
+        <h2>Data Akun</h2>
         <table border="1" cellspacing="0" cellpadding="10">
             <thead>
                 <tr>
@@ -84,8 +111,8 @@ include '../database/akun.php';
                 </td>
                 <td>
                     <a href="../database/hapus_akun.php?id=<?= $row['id'] ?>&sumber=<?= $row['sumber'] ?>"
-                        onclick="return confirm('Yakin mau hapus akun ini?')">
-                        <i class="ph ph-trash-simple"></i>
+                        onclick="return confirm('Yakin mau hapus akun ini?')" class="button-delete" style="text-decoration: none;">
+                        <i class="ph ph-trash-simple"> Hapus </i>
                     </a>
                 </td>
             </tr>

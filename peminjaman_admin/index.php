@@ -55,7 +55,7 @@ if(!$buku){
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../login_admin" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <a href="../" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
                 <button>Log Out</button>
             </a>
         </div>
@@ -72,7 +72,7 @@ if(!$buku){
         <a href="../data_buku_admin">
             <i class="ph ph-books"></i><span>Buku</span>
         </a>
-        <a href="../peminjaman_admin">
+        <a href="../peminjaman_admin" class="active">
             <i class="ph ph-hand-arrow-down"></i><span>Peminjaman</span>
         </a>
         <a href="../pengembalian_admin">
@@ -97,9 +97,11 @@ if(!$buku){
                     <th>Aksi</th>
                 </tr>
 
-            <?php while($data = mysqli_fetch_assoc($query)) { ?>
+            <?php 
+            $no= 1;
+            while($data = mysqli_fetch_assoc($query)) { ?>
                 <tr>
-                    <td><?= $data['id_peminjaman']; ?></td>
+                    <td><?php echo $no++; ?></td>
                     <td><?= $data['nama_peminjam']; ?></td>
                     <td><?= $data['judul']; ?></td>
                     <td><?= $data['tanggal_pinjam']; ?></td>
@@ -178,7 +180,7 @@ if(!$buku){
             </div>
 
             <div class="form-group">
-                <input type="text" name="no_wa" placeholder="Nomor WhatsApp" required>
+                <input type="text" name="no_wa" placeholder="Nomor WhatsApp (628XXXXXXXXX)" required>
             </div>
             <button type="submit" class="btn-submit">
                 Tambah Peminjaman

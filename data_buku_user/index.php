@@ -24,23 +24,24 @@
     <header>
         <div class="logo-right">
             <img src="../asset/logo.png" alt="logo">
-            <h3>Sistem Peminjaman Buku</h3>
-            <h3>SMKS Sukapura</h3>
+            <h3>Sistem Peminjaman Buku
+            <br><span>SMKS Sukapura</span></h3>
         </div>
 
         <div class="left">
-                <h2>selamat datang <?= isset($_SESSION['username']) ? ', ' . htmlspecialchars($_SESSION['username']) : '' ?>!</h2>
-            <a href="../login_user" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <h2>selamat datang <?= $_SESSION['username'] ?>!!</h2>
+            <a href="../" 
+            onclick="return confirm('Apakah Anda yakin ingin keluar?')">
                 <button>Log Out</button>
             </a>
         </div>
     </header>
 
     <aside>
-        <a href="../dashboard_user">
+        <a href="../dashboard_user" >
             <i class="ph ph-book-open"></i><span>Dashboard</span>
         </a>
-        <a href="../data_buku_user">
+        <a href="../data_buku_user" class="active">
             <i class="ph ph-books"></i><span>Buku</span>
         </a>
         <a href="../peminjaman_user">

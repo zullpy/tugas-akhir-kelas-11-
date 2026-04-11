@@ -19,6 +19,9 @@ include '../database/dashboard.php';
         type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -30,14 +33,15 @@ include '../database/dashboard.php';
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../login_admin" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <a href="../" 
+            onclick="return confirm('Apakah Anda yakin ingin keluar?')">
                 <button>Log Out</button>
             </a>
         </div>
     </header>
 
     <aside>
-        <a href="../dashboard_admin">
+        <a href="../dashboard_admin" class="active">
             <i class="ph ph-book-open"></i><span>Dashboard</span>
         </a>
         <a href="../data_akun">
@@ -83,35 +87,13 @@ include '../database/dashboard.php';
         </div>
 
         <div class="cover-books">
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 1">
-            </div>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <div class="cover-book">
+                    <img src="../upload/<?= $row['cover'] ?: 'default.jpg' ?>" width="120">
+                </div>
+            <?php } ?>
             <div class="cover-book">
                 <img src="../asset/cover1.avif" alt="cover buku 2">
-            </div>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 3">
-            </div>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 4">
-            </div>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 5">
-            </div>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 6">
-            </div>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 7">
-            </div>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 8">
-        </div>
-        <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 9">
-            </div>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 10">
             </div>
     </main>
 </body>
