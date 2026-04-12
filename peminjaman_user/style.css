@@ -1,4 +1,3 @@
-/* Modal background */
 .modal {
     display: none;
     position: fixed;
@@ -7,7 +6,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* Modal box */
@@ -23,8 +22,15 @@
 }
 
 @keyframes muncul {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .close {
@@ -62,25 +68,38 @@
 }
 
 .btn-submit:hover {
-    background: #5a4a3f;
+    background: #8b7b70;
 }
 
-.password-wrapper {
-    position: relative;
+.button-wrapper {
+    pointer-events: auto;
+    cursor: pointer;
 }
 
-.password-wrapper i {
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    width: 400px;
+    padding: 20px;
+    margin: 100px auto;
+    border-radius: 8px;
+}
+
+#closeModal2{
     position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+    right: 15px;
+    top: 10px;
     font-size: 25px;
     cursor: pointer;
-    color: #3b2f2a;
-}
-
-.password-wrapper i:hover {
-    color: #2a1f18; 
 }
 
 :root {
@@ -227,78 +246,13 @@ aside i {
     font-size: 20px;
 }
 
-/* main */
+
+/* ================= MAIN CONTENT ================= */
 main {
     grid-area: main;
     padding: 20px;
-    background-color: #F3ECE6;
-    transform: translateX(-1px);
-}
-
-/* button delete */
-.button-delete {
-    background: #e74c3c;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-/* container */
-.data-buku {
     display: flex;
-    justify-content: space-around;
-    margin-top: 35px;
+    flex-direction: column;
     gap: 20px;
-}
-
-/* card */
-.card {
-    position: relative;
-    background: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    width: 190px;
-    height: 110px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-/* judul */
-.card-title {
-    background: #C7A789;
-    top: -23px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-72.7%);
-    width: 130px;
-    height: 70px;
-    z-index: -1;
-    padding: 5px;
-    border-radius: 15px;
-    font-size: 13px;
-    font-weight: bolder;
-    padding-left: 15px;
-}
-
-/* angka */
-.card-value {
-    font-size: 70px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-150%, -50%);
-    font-weight: bold;
-}
-
-/* gambar */
-.card-image {
-    position: absolute;
-    right: 1px;
-    bottom: 5px;
-}
-
-.card-image img {
-    width: 100px;
+    background-color: #F3ECE6;
 }

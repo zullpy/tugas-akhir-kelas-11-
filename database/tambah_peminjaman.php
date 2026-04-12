@@ -1,5 +1,6 @@
 <?php
 include 'koneksi.php';
+session_start();
 
 $id_user = $_POST['id_user'];
 $id_buku = $_POST['id_buku'];
@@ -14,6 +15,12 @@ try {
 $cek->bind_param("i", $id_buku);
 $cek->execute();
 $data = $cek->get_result()->fetch_assoc();
+
+if ($_SESSION['role'] == 'admin') {
+    $redirect = '../peminjaman_admin';
+} else {
+    $redirect = '../peminjaman_user';
+}
 
 if ($data['stok'] <= 0) {
     die("Stok habis!");
@@ -39,11 +46,17 @@ $updateBuku->bind_param("i", $id_buku);
 $updateBuku->execute();
 
     $koneksi->commit();
-    echo "Berhasil pinjam";
+    echo "<script>
+        alert('Peminjaman berhasil!');
+        window.location='$redirect';
+    </script>";
 
 } catch (Exception $e) {
     $koneksi->rollback();
-    echo "Gagal";
+    echo "<script>
+        alert('Gagal menambahkan peminjaman!');
+        window.location='$redirect';
+    </script>";
 }
 
 $cek = $koneksi->prepare("SELECT stok FROM buku WHERE id_buku = ?");
@@ -53,6 +66,9 @@ $result = $cek->get_result();
 $data = $result->fetch_assoc();
 
 if ($data['stok'] <= 0) {
-    echo "Stok habis!";
+    echo "<script>
+        alert('Stok habis! Tidak bisa meminjam buku ini.');
+        window.location='$redirect';
+    </script>";
     exit;
 }

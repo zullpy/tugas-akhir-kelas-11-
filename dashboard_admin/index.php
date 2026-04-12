@@ -1,5 +1,11 @@
 <?php
 include '../database/dashboard.php';
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    header("Location: ../login_admin");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,10 +39,9 @@ include '../database/dashboard.php';
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../" 
-            onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <form action="../database/logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
                 <button>Log Out</button>
-            </a>
+            </form>
         </div>
     </header>
 

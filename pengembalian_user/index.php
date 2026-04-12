@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-    header("Location: ../login_admin");
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
+    header("Location: ../login_user");
     exit;
 }
 ?>
@@ -34,7 +34,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         </div>
 
         <div class="left">
-            <h2>selamat datang admin!!</h2>
+            <?php session_start(); ?>
+            <h2>selamat datang <?php echo $_SESSION['username']; ?>!!</h2>
             <form action="../database/logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
                 <button>Log Out</button>
             </form>
@@ -43,19 +44,16 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
 
     <aside>
-        <a href="../dashboard_admin">
+        <a href="../dashboard_user">
             <i class="ph ph-book-open"></i><span>Dashboard</span>
         </a>
-        <a href="../data_akun">
-            <i class="ph ph-users"></i><span>Akun</span>
-        </a>
-        <a href="../data_buku_admin">
+        <a href="../data_buku_user">
             <i class="ph ph-books"></i><span>Buku</span>
         </a>
-        <a href="../peminjaman_admin">
+        <a href="../peminjaman_user">
             <i class="ph ph-hand-arrow-down"></i><span>Peminjaman</span>
         </a>
-        <a href="../pengembalian_admin" class="active">
+        <a href="../pengembalian_user" class="active">
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
     </aside>
@@ -64,11 +62,18 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <?php
         include '../database/koneksi.php';
 
+        session_start();
+        if (!isset($_SESSION['id_user'])) {
+        header("Location: ../login_user.php");
+        exit;
+        }
+        $id_user = $_SESSION['id_user'];        
+
         $query = mysqli_query($koneksi, "
                 SELECT p.*, b.judul 
                 FROM peminjaman p
                 JOIN buku b ON p.id_buku = b.id_buku
-                WHERE p.status = 'dikembalikan'
+                WHERE p.status = 'dikembalikan' AND p.id_user = $id_user
                 ORDER BY p.id_peminjaman DESC");
         ?>
 

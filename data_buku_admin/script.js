@@ -37,8 +37,9 @@ function openEditModal(id, judul, penulis, penerbit, tahun, jenis, stok) {
     document.getElementById("edit_penulis").value = penulis;
     document.getElementById("edit_penerbit").value = penerbit;
     document.getElementById("edit_tahun").value = tahun;
-    document.getElementById("edit_jenis").value = jenis;
+    document.querySelector("#edit_jenis select").value = jenis;
     document.getElementById("edit_stok").value = stok;
+    
 
     document.getElementById("editModal").classList.add("show");
 }

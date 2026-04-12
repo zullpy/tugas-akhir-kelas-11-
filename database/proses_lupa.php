@@ -58,6 +58,9 @@ try {
     exit;
 
 } catch (Exception $e) {
-    echo "Email gagal dikirim: {$mail->ErrorInfo}";
+    echo "<script>
+        alert('Gagal mengirim email! {$mail->ErrorInfo}');
+        window.location='../lupa_pass_user';
+    </script>";
 }
 ?>

@@ -36,9 +36,15 @@ try {
     $updateStok->execute();
 
     $koneksi->commit();
-    echo "Berhasil dikembalikan";
+    echo "<script>
+        alert('Buku berhasil dikembalikan!');
+        window.location='../pengembalian_admin';
+    </script>";
 
 } catch (Exception $e) {
     $koneksi->rollback();
-    echo "Gagal";
+    echo "<script>
+        alert('Gagal mengembalikan buku!');
+        window.location='../peminjaman_admin';
+    </script>";
 }

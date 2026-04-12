@@ -24,13 +24,22 @@ if (isset($_GET['id'])) {
             header("Location: ../peminjaman_admin?msg=deleted");
             exit();
         } else {
-            echo "Gagal menghapus data: " . mysqli_error($koneksi);
+            echo "<script>
+                alert('Gagal menghapus data!');
+                window.location='../peminjaman_admin';
+            </script>";
         }
 
     } else {
-        echo "Data peminjaman tidak ditemukan!";
+        echo "<script>
+            alert('Data peminjaman tidak ditemukan!');
+            window.location='../peminjaman_admin';
+        </script>";
     }
 
 } else {
-    echo "ID tidak ditemukan.";
+    echo "<script>
+        alert('ID tidak ditemukan.');
+        window.location='../peminjaman_admin';
+    </script>";
 }

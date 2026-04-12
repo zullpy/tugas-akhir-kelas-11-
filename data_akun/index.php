@@ -1,5 +1,11 @@
 <?php
 include '../database/akun.php';
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    header("Location: ../login_admin");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +36,9 @@ include '../database/akun.php';
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../" onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <form action="../database/logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
                 <button>Log Out</button>
-            </a>
+            </form>
         </div>
     </header>
 
@@ -54,12 +60,12 @@ include '../database/akun.php';
         </a>
     </aside>
     
-    <div class="main">
+<main>
         <div class="data-buku">
             <div class="card">
                 <div class="card-title">Jumlah Akun</div>
                 <div class="card-value"><?= $akun['total'] ?></div>
-                <div class="image">
+                <div class="card-image">
                     <img src="../asset/people.png" alt="icon akun">
                 </div>
             </div>
@@ -67,7 +73,7 @@ include '../database/akun.php';
             <div class="card">
                 <div class="card-title">Total Admin</div>
                 <div class="card-value"><?= $akun_admin['total'] ?></div>
-                <div class="image">
+                <div class="card-image">
                     <img src="../asset/people2.png" alt="icon akun">
                 </div>
             </div>
@@ -75,28 +81,29 @@ include '../database/akun.php';
             <div class="card">
                 <div class="card-title">Total User</div>
                 <div class="card-value"><?= $akun_user['total'] ?></div>
-                <div class="image">
+                <div class="card-image">
                     <img src="../asset/people3.png" alt="icon akun">
                 </div>
             </div>
         </div>
-    
-        <h2>Data Akun</h2>
-        <table border="1" cellspacing="0" cellpadding="10">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Lengkap</th>
-                    <th>Kelas</th>
-                    <th>Jurusan</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $no = 1; ?>
-                <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+
+        <div class="table-container">
+            <h2>Data Akun</h2>
+            <table border="1" cellspacing="0" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Lengkap</th>
+                        <th>Kelas</th>
+                        <th>Jurusan</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $no = 1; ?>
+                    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
             <tr>
                 <td><?= $no++ ?></td>
                 <td><?= htmlspecialchars($row['username']) ?></td>
@@ -119,6 +126,7 @@ include '../database/akun.php';
                 <?php endwhile; ?>
             </tbody>
         </table>
+        </div>
         
         <div class="add">
             <a href="" id="btnTambahAdmin">
@@ -126,6 +134,7 @@ include '../database/akun.php';
             </a>
         </div>
     </div>
+</main>
 
     <!-- Modal Tambah Admin -->
 <div class="modal" id="modalAdmin">

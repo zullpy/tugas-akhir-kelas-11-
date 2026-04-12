@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
+    header("Location: ../login_user");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +38,9 @@
 
         <div class="left">
             <h2>selamat datang <?= $_SESSION['username'] ?>!!</h2>
-            <a href="../" 
-            onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <form action="../database/logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
                 <button>Log Out</button>
-            </a>
+            </form>
         </div>
     </header>
 

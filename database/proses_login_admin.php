@@ -20,6 +20,7 @@ if ($user) {
     if ($PASSWORD === $user['PASSWORD']) {
         $_SESSION['id_admin'] = $user['id_admin'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = 'admin';
 
         echo "<script>
         alert('login berhasil!'); window.location.href = '../dashboard_admin';

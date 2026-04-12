@@ -4,6 +4,7 @@ include "koneksi.php"; // sesuaikan path koneksi kamu
 $token = "RCSzbC6GW6r1peaAeq8E";
 $denda_per_hari = 5000;
 
+// kode menentukan selisih hari antara tanggal kembali dan tanggal hari ini
 $query = "
 SELECT *,
 DATEDIFF(CURDATE(), tanggal_kembali) as selisih

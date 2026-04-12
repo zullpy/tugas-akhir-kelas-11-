@@ -152,16 +152,3 @@ main {
     gap: 20px;
     background-color: #F3ECE6;
 }
-
-table{
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
-}
-
-table th{
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px;
-    text-align: left;
-}

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    header("Location: ../login_admin");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +35,9 @@
 
         <div class="left">
             <h2>selamat datang admin!!</h2>
-            <a href="../" 
-                onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <form action="../database/logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
                 <button>Log Out</button>
-            </a>
+            </form>
         </div>
     </header>
 
@@ -219,9 +226,13 @@
     <div class="modal-content2">
         <span onclick="closeEditModal()" style="cursor:pointer;">&times;</span>
 
-        <form method="POST" action="../database/update_buku.php">
+        <form method="POST" action="../database/update_buku.php" enctype="multipart/form-data">
             <input type="hidden" name="id" id="edit_id">
 
+            <h3>Edit Buku</h3>
+
+            <label for="file">Cover Buku</label>
+            <input type="file" name="cover" id="edit_cover">
             <label for="judul">judul buku</label>
             <input type="text" name="judul" id="edit_judul">
             <label for="penulis">penulis</label>
@@ -230,8 +241,15 @@
             <input type="text" name="penerbit" id="edit_penerbit">
             <label for="tahun_terbit">tahun terbit</label>
             <input type="text" name="tahun_terbit" id="edit_tahun">
-            <label for="jenis">jenis</label>
-            <input type="text" name="jenis" id="edit_jenis">
+            <label for="jenis">jenis buku</label>
+            <div class="form-group" id="edit_jenis">
+                <select name="jenis" required>
+                    <option value="">Pilih Jenis</option>
+                    <option value="edukasi">Edukasi</option>
+                    <option value="fiksi">Fiksi</option>
+                    <option value="non-fiksi">Non-Fiksi</option>
+                </select>
+            </div>
             <label for="stok">jumlah buku</label>
             <input type="number" name="stok" id="edit_stok">
 

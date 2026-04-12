@@ -1,6 +1,11 @@
 <?php
 session_start();
 include '../database/dashboard.php';
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
+    header("Location: ../login_user");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,11 +35,10 @@ include '../database/dashboard.php';
         </div>
 
         <div class="left">
-            <h2>selamat datang <?= $_SESSION['username'] ?>!!</h2>
-            <a href="../" 
-            onclick="return confirm('Apakah Anda yakin ingin keluar?')">
+            <h2>selamat datang <?php echo $_SESSION['username']; ?>!!</h2>
+            <form action="../database/logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
                 <button>Log Out</button>
-            </a>
+            </form>
         </div>
     </header>
 

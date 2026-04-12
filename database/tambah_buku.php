@@ -37,7 +37,10 @@ $folder = "../upload/";
 // cek ekstensi
 $ext = strtolower(pathinfo($cover, PATHINFO_EXTENSION));
 if ($ext != 'jpg' && $ext != 'png' && $ext != 'avif') {
-    echo "File harus gambar!";
+    echo "<script>
+        alert('Ekstensi file tidak valid! Hanya JPG, PNG, dan AVIF yang diperbolehkan.');
+        window.location='../data_buku_admin';
+    </script>";
     exit;
 }
 
