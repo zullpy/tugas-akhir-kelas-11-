@@ -46,3 +46,13 @@ function openEditModal(id, judul, penulis, penerbit, tahun, jenis, stok) {
 function closeEditModal() {
     document.getElementById("editModal").classList.remove("show");
 }
+
+let timeout = null;
+
+document.getElementById("searchInput").addEventListener("keyup", function () {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+        this.form.submit();
+    }, 500); 
+});

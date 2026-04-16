@@ -1,5 +1,10 @@
 <?php
 include '../database/akun.php';
+mysqli_query($koneksi, "
+    UPDATE users 
+    SET status = 'nonaktif'
+    WHERE last_login < NOW() - INTERVAL 1 MONTH
+");
 session_start();
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
@@ -88,7 +93,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         </div>
 
         <div class="table-container">
-            <h2>Data Akun</h2>
+            <div class="header-table">
+                <h2>Data Akun</h2>
+                <button id="btnTambah">Tambah User</button>
+            </div>
             <table border="1" cellspacing="0" cellpadding="10">
                 <thead>
                     <tr>
@@ -98,6 +106,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                         <th>Jurusan</th>
                         <th>Email</th>
                         <th>Role</th>
+                        <th>status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -117,21 +126,21 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     </span>
                 </td>
                 <td>
+                    <span class="badge 
+                        <?= $row['status'] == 'aktif' ? 'bg-success' : 'bg-secondary' ?>">
+                        <?= $row['status'] ?>
+                    </span>
+                </td>
+                <td>
                     <a href="../database/hapus_akun.php?id=<?= $row['id'] ?>&sumber=<?= $row['sumber'] ?>"
                         onclick="return confirm('Yakin mau hapus akun ini?')" class="button-delete" style="text-decoration: none;">
-                        <i class="ph ph-trash-simple"> Hapus </i>
+                        <i class="ph ph-trash-simple"> </i>
                     </a>
                 </td>
             </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
-        </div>
-        
-        <div class="add">
-            <a href="" id="btnTambahAdmin">
-                <i class="ph ph-user-plus"></i> Tambah Akun Admin
-            </a>
         </div>
     </div>
 </main>
@@ -142,7 +151,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <span class="close" id="closeModal">&times;</span>
         <h3>Tambah Akun Admin</h3>
 
-        <form action="../database/tambah_admin.php" method="POST">
+        <form action="../database/tambah_user.php" method="POST">
             <div class="form-group">
                 <input type="text" name="username" placeholder="Username" required>
             </div>
@@ -156,6 +165,19 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <input type="password" name="password" id="input-password" placeholder="Password" required>
                     <i class="ph ph-eye" id="togglePassword"></i>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <select name="kelas" id="">
+                    <option value="" disabled selected>Pilih Kelas</option>
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="jurusan" placeholder="Jurusan" required>
             </div>
 
             <button type="submit" class="btn-submit">Tambah Admin</button>

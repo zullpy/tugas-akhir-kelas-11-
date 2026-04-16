@@ -92,7 +92,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     <div class="button-wrapper" id="btnTambahPeminjaman">
             <i class="ph ph-plus"></i> Tambah Data Peminjaman
     </div>
-        <table cellspacing="0" cellpadding="10" border="1">
+    <div class="table-container">
+        <table >
             <thead>
                 <tr>
                     <th>No</th>
@@ -136,7 +137,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                                 <i class="ph ph-check-circle"></i>
                             </a>
                         <?php } ?>
-                        <i class="ph ph-warning-circle"></i>
+                        <a href="../database/buku_hilang.php?id=<?= $data['id_peminjaman']; ?>" 
+                            onclick="return confirm('Yakin buku ini hilang?')">
+                            <i class="ph ph-warning-circle"></i>
+                        </a>
                     </td>
                 </tr>
             <?php } ?>
@@ -145,6 +149,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                 
             </tbody>
         </table>
+    </div>
     </main>
     
     
@@ -158,33 +163,42 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
             <!-- PILIH BUKU -->
             <div class="form-group">
-                <select name="id_buku" required>
-                    <?php while($b = mysqli_fetch_assoc($buku)) { ?>
-                        <option value="<?= $b['id_buku']; ?>">
+                <input type="text" id="searchBuku" placeholder="Cari judul buku..." autocomplete="off">
+
+                    <div id="listBuku" class="dropdown-list">
+                        <?php while($b = mysqli_fetch_assoc($buku)) { ?>
+                            <div class="item" data-id="<?= $b['id_buku']; ?>">
                             <?= $b['judul']; ?>
-                        </option>
-                    <?php } ?>
-                </select>
+                            </div>
+                        <?php } ?>
+                    </div>
+
+                <!-- hidden input buat kirim id -->
+                <input type="hidden" name="id_buku" id="id_buku">
             </div>
 
             <!-- PILIH USER -->
-            <div class="form-group">
-                <select name="id_user" required>
-                    <option value="">-- Pilih Peminjam --</option>
-                    <?php while($u = mysqli_fetch_assoc($users)) { ?>
-                        <option value="<?= $u['id_user']; ?>">
-                            <?= $u['username']; ?>
-                        </option>
-                    <?php } ?>
-                </select>
+            <div class="form-group" style="position: relative;">
+                <input type="text" id="searchUser" placeholder="Cari user..." autocomplete="off">
+
+                    <div id="listUser" class="dropdown-list">
+                        <?php while($u = mysqli_fetch_assoc($users)) { ?>
+                            <div class="item-user" data-id="<?= $u['id_user']; ?>">
+                                <?= $u['username']; ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+
+                <!-- hidden input -->
+                <input type="hidden" name="id_user" id="id_user">
             </div>
 
             <div class="form-group">
-                <input type="date" name="tanggal_pinjam" value="<?= date('Y-m-d') ?>">
+                <input type="date" name="tanggal_pinjam" value="<?= date('Y-m-d') ?>" readonly>
             </div>
 
             <div class="form-group">
-                <input type="date" name="tanggal_kembali" required>
+                <input type="date" name="tanggal_kembali" id="tgl_kembali" required>
             </div>
 
             <div class="form-group">

@@ -42,7 +42,7 @@ body {
         radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08), transparent 40%),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06), transparent 40%),
         linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
-        url('../asset/bg2.webp');
+        url('../asset/background.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -50,6 +50,10 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+}
+
+body.loading{
+    background: #000;
 }
 
 /* ===== CARD ===== */

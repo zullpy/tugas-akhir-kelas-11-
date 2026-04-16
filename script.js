@@ -24,3 +24,4 @@ document.querySelectorAll('.link-slide').forEach(link => {
 window.addEventListener('pageshow', () => {
     document.body.classList.remove('fade-out-left', 'fade-out-right');
 });
+

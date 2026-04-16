@@ -84,7 +84,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <button type="submit">Terapkan</button>
                 </form>
             </div>
+            <form action="" method="get">
+                <div class="search-bar">
+                    <input type="text" name="search" id="searchInput" placeholder="Cari buku..." autocomplete="off" value="<?= $_GET['search'] ?? '' ?>">
+                    <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
+                </div>
+            </form>
         </div>
+    <div class="table-container">
         <table border="1" cellspacing="0" cellpadding="10">
             <thead>
                 <tr>
@@ -138,6 +145,18 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     $where[] = "status = '$status'";
                 }
 
+                $search = $_GET['search'] ?? '';
+                if (!empty($search)) {
+                    $search = mysqli_real_escape_string($koneksi, $search);
+                    $where[] = "(judul LIKE '%$search%' 
+                                OR penulis LIKE '%$search%' 
+                                OR penerbit LIKE '%$search%')";
+                }   
+
+                if (!empty($where)) {
+                    $query .= " AND " . implode(" AND ", $where);
+                }
+
                 $query = "SELECT * FROM buku WHERE status != 'nonaktif'";
 
                 if (!empty($where)) {
@@ -176,6 +195,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                 ?>
             </tbody>
         </table>
+    </div>    
     </main>
 
     <div class="modal" id="modalBuku">

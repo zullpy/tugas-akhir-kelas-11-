@@ -1,25 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
+const modal = document.getElementById("modalAdmin");
+const btn = document.getElementById("btnTambah");
+const close = document.getElementById("closeModal");
 
-    const modal = document.getElementById("modalAdmin");
-    const btn = document.getElementById("btnTambahAdmin");
-    const close = document.getElementById("closeModal");
+// buka modal
+btn.addEventListener("click", function () {
+    modal.style.display = "flex";
+});
 
-    btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        modal.style.display = "block";
-    });
+// tutup modal
+close.addEventListener("click", function () {
+    modal.style.display = "none";
+});
 
-    close.addEventListener("click", function () {
+// klik luar modal = tutup
+window.addEventListener("click", function (e) {
+    if (e.target === modal) {
         modal.style.display = "none";
-    });
-
-    window.addEventListener("click", function (e) {
-        if (e.target == modal) {
-            modal.style.display = "none";
-        }
-    });
-
-})
+    }
+});
 
 // Toggle Password
 const togglePassword = document.getElementById("togglePassword");

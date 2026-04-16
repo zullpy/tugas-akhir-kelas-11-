@@ -82,6 +82,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
                     <button type="submit">Terapkan</button>
                 </form>
             </div>
+
+            <form action="" method="get">
+                <div class="search-bar">
+                    <input type="text" name="search" id="searchInput" placeholder="Cari buku..." autocomplete="off" value="<?= $_GET['search'] ?? '' ?>">
+                    <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
+                </div>
+            </form>
         </div>
         <table border="1" cellspacing="0" cellpadding="10">
             <thead>
@@ -133,6 +140,18 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
                 if (!empty($_GET['status'])) {
                     $status = mysqli_real_escape_string($koneksi, $_GET['status']);
                     $where[] = "status = '$status'";
+                }
+
+                $search = $_GET['search'] ?? '';
+                if (!empty($search)) {
+                    $search = mysqli_real_escape_string($koneksi, $search);
+                    $where[] = "(judul LIKE '%$search%' 
+                                OR penulis LIKE '%$search%' 
+                                OR penerbit LIKE '%$search%')";
+                }   
+
+                if (!empty($where)) {
+                    $query .= " AND " . implode(" AND ", $where);
                 }
 
                 $query = "SELECT * FROM buku WHERE status != 'nonaktif'";

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<div class="card">
+<div class="card loading">
     <!-- LEFT -->
     <div class="left">
         <h1>SISTEM PEMINJAMAN BUKU<br>SMKS SUKAPURA</h1>

@@ -9,7 +9,8 @@ $query = "
         role,
         '' AS kelas,
         '' AS jurusan,
-        'admin' AS sumber
+        'admin' AS sumber,
+        'aktif' AS status
     FROM admin
 
     UNION ALL
@@ -21,7 +22,8 @@ $query = "
         role,
         kelas,
         jurusan,
-        'user' AS sumber
+        'user' AS sumber,
+        status
     FROM users
 ";
 
@@ -49,3 +51,5 @@ $akun_admin = mysqli_fetch_assoc(
 $akun_user = mysqli_fetch_assoc(
     mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM users")
 );
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';

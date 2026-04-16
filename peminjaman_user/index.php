@@ -34,7 +34,6 @@ if(!$buku){
 }
 ?>
 <?php
-session_start();
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
     header("Location: ../login_user");
@@ -47,7 +46,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peminjaman Buku</title>
-    <link rel="stylesheet" href="peminjaman_admin/style.css">
+    <link rel="stylesheet" href="peminjaman_user/style.css">
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
     <link
         rel="stylesheet"
@@ -108,22 +107,22 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
                     <th>Status</th>
                 </tr>
 
-            <?php 
-            $no= 1;
-            while($data = mysqli_fetch_assoc($query)) { ?>
-                <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?= $data['nama_peminjam']; ?></td>
-                    <td><?= $data['judul']; ?></td>
-                    <td><?= $data['tanggal_pinjam']; ?></td>
-                    <td><?= $data['tanggal_kembali']; ?></td>
-                    <td><?= $data['no_wa']; ?></td>
-                    <td><?= $data['status']; ?></td>
-                </tr>
-            <?php } ?>
+            
             </thead>
             <tbody id="peminjaman-table-body">
-                
+                <?php 
+                    $no= 1;
+                    while($data = mysqli_fetch_assoc($query)) { ?>
+                        <tr>
+                            <td><?php echo $no++; ?></td>
+                            <td><?= $data['nama_peminjam']; ?></td>
+                            <td><?= $data['judul']; ?></td>
+                            <td><?= $data['tanggal_pinjam']; ?></td>
+                            <td><?= $data['tanggal_kembali']; ?></td>
+                            <td><?= $data['no_wa']; ?></td>
+                            <td><?= $data['status']; ?></td>
+                        </tr>
+                <?php } ?>
             </tbody>
         </table>
     </main>
@@ -139,32 +138,36 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
 
             <!-- PILIH BUKU -->
             <div class="form-group">
-                <select name="id_buku" required>
-                    <?php while($b = mysqli_fetch_assoc($buku)) { ?>
-                        <option value="<?= $b['id_buku']; ?>">
+                <input type="text" id="searchBuku" placeholder="Cari judul buku..." autocomplete="off">
+
+                    <div id="listBuku" class="dropdown-list">
+                        <?php while($b = mysqli_fetch_assoc($buku)) { ?>
+                            <div class="item" data-id="<?= $b['id_buku']; ?>">
                             <?= $b['judul']; ?>
-                        </option>
-                    <?php } ?>
-                </select>
+                            </div>
+                        <?php } ?>  
+                    </div>
+
+                <!-- hidden input buat kirim id -->
+                <input type="hidden" name="id_buku" id="id_buku">
             </div>
 
             <!-- PILIH USER -->
             <div class="form-group">
-    <select disabled>
-        <option>
-            <?= $_SESSION['username']; ?>
-        </option>
-    </select>
-
-    <input type="hidden" name="id_user" value="<?= $_SESSION['id_user']; ?>">
-</div>
-
-            <div class="form-group">
-                <input type="date" name="tanggal_pinjam" value="<?= date('Y-m-d') ?>">
+                <select disabled>
+                    <option>
+                        <?= $_SESSION['username']; ?>
+                    </option>
+                </select>
+                <input type="hidden" name="id_user" value="<?= $_SESSION['id_user']; ?>">
             </div>
 
             <div class="form-group">
-                <input type="date" name="tanggal_kembali" required>
+                <input type="date" name="tanggal_pinjam" value="<?= date('Y-m-d') ?>" readonly>
+            </div>
+
+            <div class="form-group">
+                <input type="date" name="tanggal_kembali" id="tgl_kembali" required>
             </div>
 
             <div class="form-group">
@@ -180,5 +183,5 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
 
 
 </body>
-<script src="peminjaman_admin/script.js"></script>
+<script src="peminjaman_user/script.js"></script>
 </html>

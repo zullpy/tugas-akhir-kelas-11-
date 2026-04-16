@@ -12,7 +12,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengembalian Buku</title>
-    <link rel="stylesheet" href="pengembalian_admin/style.css">
+    <link rel="stylesheet" href="pengembalian_user/style.css">
     <link rel="shortcut icon" href="../asset/favicon.ico" type="image/x-icon">
     <link
         rel="stylesheet"
@@ -74,7 +74,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
                 FROM peminjaman p
                 JOIN buku b ON p.id_buku = b.id_buku
                 WHERE p.status = 'dikembalikan' AND p.id_user = $id_user
-                ORDER BY p.id_peminjaman DESC");
+                ORDER BY p.id_peminjaman ASC");
         ?>
 
         <h2>Data Pengembalian</h2>
@@ -103,5 +103,5 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
     </main>
     
 </body>
-<script src="pengembalian_admin/script.js"></script>
+<script src="pengembalian_user/script.js"></script>
 </html>

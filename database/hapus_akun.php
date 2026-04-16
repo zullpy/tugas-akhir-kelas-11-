@@ -21,5 +21,5 @@ mysqli_stmt_bind_param($stmt, "i", $id);
 mysqli_stmt_execute($stmt);
 
 /* balik ke halaman akun */
-header("Location: ../data_akun/index.php");
+header("Location: ../data_akun");
 exit;

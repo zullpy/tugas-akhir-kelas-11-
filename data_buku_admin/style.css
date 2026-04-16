@@ -1,199 +1,12 @@
-.filter-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-#btnFilter {
-    cursor: pointer;
-    font-size: 22px;
-}
-
-.filter-box {
-    display: none;
-    position: absolute;
-    top: 30px;
-    left: 0px; /* geser ke samping icon */
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 100;
-}
-
-.filter-box.show {
-    display: block;
-}
-
-/* Modal background */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-}
-
-/* Modal box */
-.modal-content {
-    background: #fff;
-    text-align: center;
-    width: 400px;
-    padding: 20px;
-    margin: 100px auto;
-    border-radius: 8px;
-    position: relative;
-    animation: muncul 0.3s ease;
-}
-
-@keyframes muncul {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.close {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group input {
-    width: 95%;
-    padding: 8px;
-    border: none;
-    border-bottom: 2px solid #8b7b70;
-    background: transparent;
-}
-
-.form-group input:focus {
-    outline: none;
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 10px;
-    background: #6b584c;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.btn-submit:hover {
-    background: #8b7b70;
-}
-
-/* background gelap */
-.modal2 {
-    display: none;
-}
-
-.modal2.show {
-    display: flex;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-/* isi modal */
-.modal-content2 {
-    background-color: var(--secondary-color);
-    padding: 25px;
-    border-radius: 15px;
-    width: 400px;
-    animation: muncul 0.3s ease;
-    position: relative;
-}
-
-/* animasi muncul */
-@keyframes muncul {
-    from {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* tombol close */
-.modal-content2 span {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* form */
-.modal-content2 input,
-.modal-content2 select {
-    width: 100%;
-    padding: 8px;
-    margin: 6px 0 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-.modal-content2 label {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* tombol update */
-.modal-content2 button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.modal-content2 button:hover {
-    opacity: 0.9;
-}
-
-.edit, .hapus {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-}  
-
-.hapus {
-    color: #c0392b;
-}
-
-.hapus-link {
-    text-decoration: none;
-    color: inherit;
-}
 
 :root {
     --primary-color: #C7A789;
     --secondary-color: #F3ECE6;
+    --soft-brown: #6b584c;
+    --light-cream: #f9f5f1;
 }
 
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -210,31 +23,22 @@ body {
     grid-template-areas: 
         "header header"
         "aside main";
-
     min-height: 100vh;
-    gap: 0;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 /* ================= HEADER ================= */
 header {
     grid-area: header;
-    background: #fffefe;
-
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 15px;
     position: relative;
 }
 
-/* MENU ICON */
-.menu-icon i {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* LOGO */
 .logo-right {
     display: flex;
     align-items: center;
@@ -247,52 +51,30 @@ header {
 
 .logo-right h3 {
     font-size: 15px;
-    line-height: 1.3;
-    color: black;
 }
 
-.logo-right h3 span {
+.logo-right span {
     font-size: 12px;
     color: #555;
 }
 
-/* TITLE TENGAH */
 header h2 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 16px;
-    color: black;
+    font-size: 14px;
 }
 
-/* ================= RIGHT (WELCOME + LOGOUT) ================= */
 .left {
     display: flex;
     align-items: center;
-    padding: 5px 15px;
-    border-radius: 20px;
-    gap: 6px;
-}
-
-.left h2 {
-    font-size: 15px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    margin-right: 70px;
-}
-
-.left h2 span {
-    font-weight: bold;
+    gap: 10px;
 }
 
 .left button {
     background: #eb5747;
     border: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 15px;
     color: white;
     cursor: pointer;
-    font-size: 12px;
 }
 
 /* ================= SIDEBAR ================= */
@@ -300,14 +82,12 @@ aside {
     grid-area: aside;
     background: var(--primary-color);
     padding: 15px 10px;
-    border-radius: 0 20px 0px 0;
+    border-radius: 0 20px 0 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 100%;
 }
 
-/* MENU */
 aside a {
     text-decoration: none;
     color: white;
@@ -316,7 +96,6 @@ aside a {
     gap: 10px;
     padding: 10px;
     border-radius: 12px;
-    transition: 0.2s;
 }
 
 aside a:hover {
@@ -333,13 +112,281 @@ aside i {
     font-size: 20px;
 }
 
-
+/* ================= MAIN ================= */
 main {
     grid-area: main;
-    padding: 20px;
+    padding: 25px;
+    background-color: var(--secondary-color);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #F3ECE6;
+    min-height: 100vh;
 }
 
+/* ================= FILTER ================= */
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tambah {
+    background: var(--soft-brown);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.tambah:hover {
+    background: #5a4a3f;
+}
+
+#btnFilter {
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--soft-brown);
+}
+
+/* BOX FILTER */
+.filter-box {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    z-index: 100;
+}
+
+.filter-box select,
+.filter-box button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.filter-box button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+/* ================= TABLE ================= */
+.table-container {
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+thead {
+    background: var(--primary-color);
+    color: white;
+}
+
+thead th {
+    padding: 14px;
+    font-size: 14px;
+    text-align: center;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:nth-child(even) {
+    background: var(--light-cream);
+}
+
+tbody tr:hover {
+    background: #efe6df;
+}
+
+/* ================= BUTTON AKSI ================= */
+.edit, .hapus {
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 3px 3px;
+    padding: 6px 8px;
+    border-radius: 8px;
+}
+
+.edit {
+    background: #6b9dfc;
+    color: white;
+}
+
+.edit:hover {
+    background: #4e7de0;
+}
+
+.hapus {
+    background: #e74c3c;
+    color: white;
+}
+
+.hapus:hover {
+    background: #c0392b;
+}
+
+.hapus-link {
+    text-decoration: none;
+}
+
+/* ================= MODAL ================= */
+.modal, .modal2 {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show,
+.modal2.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content{
+    background: #fff;
+    width: 400px;
+    padding: 25px;
+    border-radius: 15px;
+    animation: muncul 0.3s ease;
+}
+
+.modal-content2 {
+    background: var(--light-cream);
+    padding: 25px;
+    border-radius: 15px;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+/* TOMBOL CLOSE */
+.modal-content2 span {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    color: var(--primary-color);
+}
+
+/* JUDUL */
+.modal-content2 h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* LABEL */
+.modal-content2 label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+}
+
+/* INPUT */
+.modal-content2 input,
+.modal-content2 select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid var(--soft-brown);
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    transition: 0.2s;
+}
+
+/* FOCUS EFFECT */
+.modal-content2 input:focus,
+.modal-content2 select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(199, 167, 137, 0.5);
+}
+
+/* BUTTON */
+.modal-content2 button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* HOVER BUTTON */
+.modal-content2 button:hover {
+    background: var(--secondary-color);
+}
+
+@keyframes muncul {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    background: transparent;
+}
+
+.form-group input:focus {
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: var(--soft-brown);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

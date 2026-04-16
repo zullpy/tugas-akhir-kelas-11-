@@ -13,7 +13,7 @@ $user = mysqli_fetch_assoc($qUser);
 $totalAkun['total'] = $admin['total'] + $user['total'];
 
 // TOTAL BUKU
-$qBuku = mysqli_query($koneksi, "SELECT SUM(jumlah_tetap) AS total FROM buku where status != 'nonaktif'");
+$qBuku = mysqli_query($koneksi, "SELECT SUM(jumlah_tetap) AS total FROM buku where status != 'nonaktif' and status != 'hilang'");
 $totalBuku = mysqli_fetch_assoc($qBuku);
 
 // TOTAL DIPINJAM
@@ -26,16 +26,17 @@ $dipinjam = mysqli_fetch_assoc($qDipinjam);
 
 // TOTAL TERSEDIA
 $qTersedia = mysqli_query($koneksi, 
-    "SELECT sum(stok) AS total 
+    "SELECT SUM(stok) AS total 
      FROM buku 
-     WHERE status = 'tersedia'"
+     WHERE status != 'nonaktif' 
+     AND status != 'hilang'"
 );
 $tersedia = mysqli_fetch_assoc($qTersedia);
 
 // TOTAL HILANG
 $qHilang = mysqli_query($koneksi, 
     "SELECT COUNT(*) AS total 
-     FROM buku 
+     FROM peminjaman
      WHERE status = 'hilang'"
 );
 $hilang = mysqli_fetch_assoc($qHilang);

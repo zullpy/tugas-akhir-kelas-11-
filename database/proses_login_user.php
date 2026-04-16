@@ -22,6 +22,14 @@ if ($user) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = 'user';
 
+        $now = date("Y-m-d H:i:s");
+
+        mysqli_query($koneksi, "
+            UPDATE users 
+            SET last_login = '$now', status = 'aktif'
+            WHERE email = '$email'
+        ");
+
         echo "<script>alert('login berhasil!'); window.location.href = '../dashboard_user';</script>";
         exit;
         // header("Location: dashboard.php");

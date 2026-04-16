@@ -61,6 +61,15 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <a href="../pengembalian_admin">
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
+        <a href="../transaksi_admin">
+            <i class="ph ph-cash-register"></i><span>Transaksi</span>
+        </a>
+        <a href="../riwayat_transaksi_admin">
+            <i class="ph ph-money"></i><span>Riwayat Transaksi</span>
+        </a>
+        <a href="../riwayat_crud">
+            <i class="ph ph-clock-counter-clockwise"></i><span>Riwayat CRUD</span>
+        </a>
     </aside>
 
     <main>
@@ -93,13 +102,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
         <div class="cover-books">
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="cover-book">
+                <div class="cover-book <?= $row['stok'] == 0 ? 'habis' : '' ?>">
                     <img src="../upload/<?= $row['cover'] ?: 'default.jpg' ?>" width="120">
+        
+                <?php if ($row['stok'] == 0) { ?>
+                    <div class="overlay">Stok Habis</div>
+                <?php } ?>
                 </div>
             <?php } ?>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 2">
-            </div>
     </main>
 </body>
 

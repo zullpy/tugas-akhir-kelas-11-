@@ -20,8 +20,9 @@ body {
     grid-template-areas: 
         "header header"
         "aside main";
-
     min-height: 100vh;
+    height: 150vh;
+    overflow: hidden;
     gap: 0;
 }
 
@@ -152,6 +153,8 @@ main {
     border-radius: 0;
     margin: 0;
     transform: translateX(-1px);
+    height: 100vh;
+    overflow-y: auto;
 }
 
 /* ================= DATA ================= */
@@ -211,7 +214,6 @@ main {
     gap: 17px;
     flex-wrap: wrap;
     margin-left: 4px;
-    
 }
 
 .cover-book {
@@ -226,6 +228,43 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.cover-book {
+    position: relative;
+    display: inline-block;
+}
+
+/* efek abu-abu */
+.cover-book.habis img {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+/* overlay tulisan */
+.cover-book .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* muncul kalau stok habis */
+.cover-book.habis .overlay {
+    opacity: 1;
 }
 
 /* ================= MOBILE ================= */

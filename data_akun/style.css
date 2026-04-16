@@ -1,93 +1,12 @@
-/* Modal background */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-}
-
-/* Modal box */
-.modal-content {
-    background: #fff;
-    text-align: center;
-    width: 400px;
-    padding: 20px;
-    margin: 100px auto;
-    border-radius: 8px;
-    position: relative;
-    animation: muncul 0.3s ease;
-}
-
-@keyframes muncul {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.close {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group input {
-    width: 95%;
-    padding: 8px;
-    border: none;
-    border-bottom: 2px solid #8b7b70;
-    background: transparent;
-}
-
-.form-group input:focus {
-    outline: none;
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 10px;
-    background: #6b584c;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.btn-submit:hover {
-    background: #5a4a3f;
-}
-
-.password-wrapper {
-    position: relative;
-}
-
-.password-wrapper i {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 25px;
-    cursor: pointer;
-    color: #3b2f2a;
-}
-
-.password-wrapper i:hover {
-    color: #2a1f18; 
-}
 
 :root {
     --primary-color: #C7A789;
     --secondary-color: #F3ECE6;
+    --soft-brown: #6b584c;
+    --light-cream: #f9f5f1;
 }
 
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -104,28 +23,20 @@ body {
     grid-template-areas: 
         "header header"
         "aside main";
-
     min-height: 100vh;
-    gap: 0;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* ================= HEADER ================= */
 header {
     grid-area: header;
-    background: #fffefe;
-
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 15px;
     position: relative;
-}
-
-/* MENU ICON */
-.menu-icon i {
-    font-size: 24px;
-    cursor: pointer;
 }
 
 /* LOGO */
@@ -142,7 +53,6 @@ header {
 .logo-right h3 {
     font-size: 15px;
     line-height: 1.3;
-    color: black;
 }
 
 .logo-right h3 span {
@@ -150,58 +60,39 @@ header {
     color: #555;
 }
 
-/* TITLE TENGAH */
+/* TITLE */
 header h2 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 16px;
-    color: black;
+    font-size: 14px;
 }
 
-/* ================= RIGHT (WELCOME + LOGOUT) ================= */
+/* RIGHT */
 .left {
     display: flex;
     align-items: center;
-    padding: 5px 15px;
-    border-radius: 20px;
-    gap: 6px;
-}
-
-.left h2 {
-    font-size: 15px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    margin-right: 70px;
-}
-
-.left h2 span {
-    font-weight: bold;
+    gap: 10px;
 }
 
 .left button {
     background: #eb5747;
     border: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 15px;
     color: white;
     cursor: pointer;
     font-size: 12px;
 }
 
-/* ================= SIDEBAR ================= */
+/* ================= SIDEBAR (TIDAK DIUBAH) ================= */
 aside {
     grid-area: aside;
     background: var(--primary-color);
     padding: 15px 10px;
-    border-radius: 0 20px 0px 0;
+    border-radius: 0 20px 0 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 100%;
 }
 
-/* MENU */
 aside a {
     text-decoration: none;
     color: white;
@@ -227,78 +118,243 @@ aside i {
     font-size: 20px;
 }
 
-/* main */
+/* ================= MAIN ================= */
 main {
     grid-area: main;
-    padding: 20px;
-    background-color: #F3ECE6;
-    transform: translateX(-1px);
+    padding: 25px;
+    background-color: var(--secondary-color);
+    overflow-y: auto;
+    height: 100vh;
 }
 
-/* button delete */
-.button-delete {
-    background: #e74c3c;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-/* container */
+/* ================= CARD ================= */
 .data-buku {
     display: flex;
-    justify-content: space-around;
-    margin-top: 35px;
     gap: 20px;
+    margin-bottom: 30px;
 }
 
-/* card */
 .card {
-    position: relative;
     background: #fff;
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 20px;
-    width: 190px;
-    height: 110px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    flex: 1;
+    position: relative;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
-/* judul */
 .card-title {
-    background: #C7A789;
-    top: -23px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-72.7%);
-    width: 130px;
-    height: 70px;
-    z-index: -1;
-    padding: 5px;
-    border-radius: 15px;
-    font-size: 13px;
-    font-weight: bolder;
-    padding-left: 15px;
+    font-size: 14px;
+    color: var(--soft-brown);
+    margin-bottom: 10px;
 }
 
-/* angka */
 .card-value {
-    font-size: 70px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-150%, -50%);
+    font-size: 40px;
     font-weight: bold;
-}
-
-/* gambar */
-.card-image {
-    position: absolute;
-    right: 1px;
-    bottom: 5px;
+    color: var(--soft-brown);
 }
 
 .card-image img {
-    width: 100px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 80px;
+}
+
+/* ================= TABLE ================= */
+.table-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.table-container h2 {
+    margin-bottom: 15px;
+    color: var(--soft-brown);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+thead {
+    background: var(--primary-color);
+    color: white;
+}
+
+thead th {
+    padding: 14px;
+    font-size: 14px;
+    text-align: center;
+}
+
+tbody td {
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+}
+
+/* ZEBRA */
+tbody tr:nth-child(even) {
+    background: var(--light-cream);
+}
+
+/* HOVER */
+tbody tr:hover {
+    background: #efe6df;
+    transition: 0.2s;
+}
+
+/* ================= BADGE ================= */
+.badge {
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 12px;
+}
+
+.bg-danger {
+    background: #e74c3c;
+}
+
+.bg-primary {
+    background: var(--soft-brown);
+}
+
+/* ================= BUTTON ================= */
+.button-delete {
+    background: #e74c3c;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.button-delete:hover {
+    background: #c0392b;
+}
+
+/* ================= MODAL ================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: #fff;
+    text-align: center;
+    width: 400px;
+    padding: 25px;
+    margin: 100px auto;
+    border-radius: 15px;
+    position: relative;
+    animation: muncul 0.3s ease;
+}
+
+@keyframes muncul {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    background: transparent;
+}
+
+.form-group input:focus {
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: var(--soft-brown);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.btn-submit:hover {
+    background: #5a4a3f;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+}
+
+.bg-success {
+    background-color: #28a745;
+}
+
+.bg-secondary {
+    background-color: #6c757d;
+}
+
+.header-table {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header-table h2 {
+    margin: 0;}
+
+#btnTambah {
+    padding: 8px 15px;
+    background-color: var(--soft-brown);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#btnTambah:hover {
+    background-color: #5a4a3f;
 }

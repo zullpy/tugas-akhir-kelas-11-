@@ -11,16 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btn.addEventListener("click", function (e) {
         e.preventDefault();
-        modal.style.display = "block";
+        modal.classList.add("show");
     });
 
     close.addEventListener("click", function () {
-        modal.style.display = "none";
+        modal.classList.remove("show");
     });
 
     window.addEventListener("click", function (e) {
         if (e.target == modal) {
-            modal.style.display = "none";
+            modal.classList.remove("show");
         }
     });
 
@@ -47,3 +47,13 @@ function openEditModal(id, judul, penulis, penerbit, tahun, jenis, stok) {
 function closeEditModal() {
     document.getElementById("editModal").classList.remove("show");
 }
+
+let timeout = null;
+
+document.getElementById("searchInput").addEventListener("keyup", function () {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+        this.form.submit();
+    }, 500); 
+});

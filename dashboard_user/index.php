@@ -86,9 +86,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
                     <img src="../upload/<?= $row['cover'] ?: 'default.jpg' ?>" width="120">
                 </div>
             <?php } ?>
-            <div class="cover-book">
-                <img src="../asset/cover1.avif" alt="cover buku 2">
-            </div>
         </div>
     </main>
 </body>

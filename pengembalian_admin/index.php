@@ -5,6 +5,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location: ../login_admin");
     exit;
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,18 +67,21 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         include '../database/koneksi.php';
 
         $query = mysqli_query($koneksi, "
-                SELECT p.*, b.judul 
-                FROM peminjaman p
-                JOIN buku b ON p.id_buku = b.id_buku
-                WHERE p.status = 'dikembalikan'
-                ORDER BY p.id_peminjaman DESC");
+            SELECT p.*, u.username, b.judul 
+            FROM peminjaman p
+            JOIN users u ON p.id_user = u.id_user
+            JOIN buku b ON p.id_buku = b.id_buku
+            WHERE p.status = 'dikembalikan' OR p.status = 'hilang'
+            ORDER BY p.id_peminjaman ASC"
+            );
         ?>
 
         <h2>Data Pengembalian</h2>
-
+    <div class="table-container">
         <table border="1" cellpadding="10" cellspacing="0">
             <tr>
                 <th>ID</th>
+                <th>nama</th>
                 <th>Judul Buku</th>
                 <th>Tanggal Pinjam</th>
                 <th>Tanggal Kembali</th>
@@ -87,6 +92,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <?php $no = 1; while($data = mysqli_fetch_assoc($query)){ ?>
             <tr>
                 <td><?= $no++; ?></td>
+                <td><?= $data['username']; ?></td>
                 <td><?= $data['judul']; ?></td>
                 <td><?= $data['tanggal_pinjam']; ?></td>
                 <td><?= $data['tanggal_kembali']; ?></td>
@@ -95,6 +101,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             </tr>
         <?php } ?>
         </table>
+    </div>
     </main>
     
 </body>
