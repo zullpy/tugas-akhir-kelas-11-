@@ -22,23 +22,36 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 const modalEdit = document.getElementById("modalEdit");
-const close = document.getElementById("closeModal2");
+const closeModal2 = document.getElementById("closeModal2");
 
-document.querySelectorAll(".btnEdit").forEach(btn => {
-    btn.addEventListener("click", function() {
+// ambil semua tombol edit
+document.querySelectorAll(".btn-edit").forEach(btn => {
+    btn.addEventListener("click", function () {
 
-        modalEdit.style.display = "flex";
+        // buka modal
+        modalEdit.style.display = "block";
 
+        // ambil data dari tombol
         document.getElementById("edit_id").value = this.dataset.id;
-        document.getElementById("edit_user").value = this.dataset.user;
-        document.getElementById("edit_buku").value = this.dataset.buku;
+        document.getElementById("edit_user").value = this.dataset.id_user;
+        document.getElementById("edit_buku").value = this.dataset.id_buku;
         document.getElementById("edit_pinjam").value = this.dataset.pinjam;
         document.getElementById("edit_kembali").value = this.dataset.kembali;
         document.getElementById("edit_wa").value = this.dataset.wa;
     });
 });
 
-close.onclick = () => modalEdit.style.display = "none";
+// tombol close
+closeModal2.onclick = function () {
+    modalEdit.style.display = "none";
+};
+
+// klik luar modal
+window.onclick = function (event) {
+    if (event.target == modalEdit) {
+        modalEdit.style.display = "none";
+    }
+};
 
 const searchInput = document.getElementById("searchBuku");
 const list = document.getElementById("listBuku");
@@ -121,3 +134,4 @@ tglPinjam.addEventListener("change", function() {
     tglKembali.max = maxFormat;
     tglKembali.min = this.value; // ga boleh sebelum pinjam
 });
+

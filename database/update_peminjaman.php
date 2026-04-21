@@ -1,35 +1,39 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include "koneksi.php";
 
+// ambil data dari form
 $id = $_POST['id'];
 $id_user = $_POST['id_user'];
 $id_buku = $_POST['id_buku'];
 $tgl_pinjam = $_POST['tgl_pinjam'];
 $tgl_kembali = $_POST['tgl_kembali'];
-$wa = $_POST['no_wa'];
-$status = $_POST['status'];
+$no_wa = $_POST['no_wa'];
 
-$update = mysqli_prepare($koneksi,
-    "UPDATE peminjaman 
-    SET id_user=?, 
-        id_buku=?, 
-        tanggal_pinjam=?, 
-        tanggal_kembali=?, 
-        no_wa=?, 
-        status=? 
-    WHERE id_peminjaman=?"
-);
+// validasi sederhana
+if(empty($id) || empty($id_user) || empty($id_buku)){
+    die("Data tidak lengkap!");
+}
 
-mysqli_stmt_bind_param($update, "iissssi",
-    $id_user,
-    $id_buku,
-    $tgl_pinjam,
-    $tgl_kembali,
-    $wa,
-    $status,
-    $id
-);
+// query update
+$query = mysqli_query($koneksi, "UPDATE peminjaman SET
+    id_user = '$id_user',
+    id_buku = '$id_buku',
+    tanggal_pinjam = '$tgl_pinjam',
+    tanggal_kembali = '$tgl_kembali',
+    no_wa = '$no_wa'
+WHERE id_peminjaman = '$id'
+");
 
-mysqli_stmt_execute($update);
-
-header("Location: ../peminjaman_admin");
+// cek hasil
+if($query){
+    echo "<script>
+        alert('Data berhasil diupdate!');
+        window.location.href = '../peminjaman_admin';
+    </script>";
+} else {
+    echo "Gagal update: " . mysqli_error($koneksi);
+}
+?>

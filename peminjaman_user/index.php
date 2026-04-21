@@ -89,6 +89,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
         <a href="../pengembalian_user">
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
+        <a href="../transaksi_user">
+            <i class="ph ph-cash-register"></i><span>Transaksi</span>
+        </a>
     </aside>
 
     <main>

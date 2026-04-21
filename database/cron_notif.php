@@ -42,10 +42,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         Kamu terlambat $selisih hari.
         Denda berjalan: Rp " . number_format($total_denda,0,',','.') . "
         Segera kembalikan buku untuk menghentikan denda dan bayar denda🙏
-        jika ingin membayar denda silahkan datang ke perpustakaan atau kirim ke :
-        No. Rekening: 029377251829
-        Atas Nama: perpussukapura
-        note: tulis nama dan id peminjaman di keterangan transfer";
+        jika ingin membayar denda silahkan datang ke perpustakaan datangi petugas untuk membayar denda";
     }
 
     // ======================

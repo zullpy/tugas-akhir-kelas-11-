@@ -4,17 +4,20 @@ ini_set('display_errors', 1);
 include "../database/koneksi.php";
 include '../database/terlambat.php';
 
-$query = mysqli_query($koneksi, "SELECT peminjaman.id_peminjaman,
-        users.username AS nama_peminjam,
-        buku.judul AS judul,
-        peminjaman.tanggal_pinjam,
-        peminjaman.tanggal_kembali,
-        peminjaman.no_wa,
-        peminjaman.status
+$query = mysqli_query($koneksi, "SELECT 
+    peminjaman.id_peminjaman,
+    peminjaman.id_user,
+    peminjaman.id_buku,
+    users.username AS nama_peminjam,
+    buku.judul AS judul,
+    peminjaman.tanggal_pinjam,
+    peminjaman.tanggal_kembali,
+    peminjaman.no_wa,
+    peminjaman.status
 FROM peminjaman
 JOIN users ON peminjaman.id_user = users.id_user
 JOIN buku ON peminjaman.id_buku = buku.id_buku
-WHERE peminjaman.status = 'dipinjam';");
+WHERE peminjaman.status = 'dipinjam'");
 
 $users = mysqli_query($koneksi, "SELECT * FROM users");
 $buku  = mysqli_query($koneksi, "SELECT * FROM buku WHERE status='tersedia'");
@@ -87,6 +90,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <a href="../pengembalian_admin">
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
+        <a href="../transaksi_admin">
+            <i class="ph ph-cash-register"></i><span>Transaksi</span>
+        </a>
+        <a href="../riwayat_crud">
+            <i class="ph ph-clock-counter-clockwise"></i><span>Activity Log</span>
+        </a>
     </aside>
 
     <main>
@@ -119,16 +128,15 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <td><?= $data['no_wa']; ?></td>
                     <td><?= $data['status']; ?></td>
                     <td>
-                    <a href="#" class="btnEdit"
+                        <button class="btn-edit"
                             data-id="<?= $data['id_peminjaman']; ?>"
-                            data-user="<?= $data['nama_peminjam']; ?>"
-                            data-buku="<?= $data['judul']; ?>"
-                            data-pinjam="<?= $data['tanggal_pinjam']; ?>"
-                            data-kembali="<?= $data['tanggal_kembali']; ?>"
-                            data-wa="<?= $data['no_wa']; ?>"
-                            data-status="<?= $data['status']; ?>">
-                        <i class="ph ph-pencil"></i>
-                    </a>
+    data-id_user="<?= $data['id_user']; ?>"
+    data-id_buku="<?= $data['id_buku']; ?>"
+    data-pinjam="<?= $data['tanggal_pinjam']; ?>"
+    data-kembali="<?= $data['tanggal_kembali']; ?>"
+    data-wa="<?= $data['no_wa']; ?>">
+                            <i class="ph ph-pencil"></i>
+                        </button>
                         <a href="../database/hapus_peminjaman.php?id=<?= $data['id_peminjaman']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                             <i class="ph ph-trash-simple"></i>
                         </a>
@@ -222,7 +230,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
                     Nama:
                     <select name="id_user" id="edit_user">
-                        <option value='pilih peminjam'>-- Pilih Peminjam --</option>
+                        <option value=''>-- Pilih Peminjam --</option>
                         <?php
                         $u = mysqli_query($koneksi, "SELECT * FROM users");
                         while($user = mysqli_fetch_assoc($u)){
@@ -237,7 +245,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     Judul Buku:
                     <select name="id_buku" id="edit_buku">
                         <?php
-                        $b = mysqli_query($koneksi, "SELECT * FROM buku WHERE status!='nonaktif'");
+                        $b = mysqli_query($koneksi, "SELECT * FROM buku WHERE status!='nonaktif' and stok > 0");
                         while($buku = mysqli_fetch_assoc($b)){
                             echo "<option value='{$buku['id_buku']}'>{$buku['judul']}</option>";
                         }

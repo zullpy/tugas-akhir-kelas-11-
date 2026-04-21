@@ -56,7 +56,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
         <a href="../pengembalian_user" class="active">
             <i class="ph ph-hand-arrow-up"></i><span>Pengembalian</span>
         </a>
-        
+        <a href="../transaksi_user">
+            <i class="ph ph-cash-register"></i><span>Transaksi</span>
+        </a>
     </aside>
 
     <main>        
@@ -74,7 +76,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
                 SELECT p.*, b.judul 
                 FROM peminjaman p
                 JOIN buku b ON p.id_buku = b.id_buku
-                WHERE p.status = 'dikembalikan' AND p.id_user = $id_user
+                WHERE p.status IN ('dikembalikan', 'hilang')
+                AND p.id_user = $id_user
                 ORDER BY p.id_peminjaman ASC");
         ?>
 

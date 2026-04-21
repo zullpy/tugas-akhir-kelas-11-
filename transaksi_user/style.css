@@ -1,0 +1,142 @@
+:root {
+    --primary-color: #C7A789;
+    --secondary-color: #F3ECE6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY GRID */
+body {
+    background: #f5f6fa;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas: 
+        "header header"
+        "aside main";
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* HEADER */
+header {
+    grid-area: header;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    position: relative;
+}
+
+.logo-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-right img {
+    width: 60px;
+}
+
+.logo-right h3 {
+    font-size: 15px;
+}
+
+.logo-right span {
+    font-size: 12px;
+    color: #555;
+}
+
+header h2 {
+    font-size: 16px;
+}
+
+/* RIGHT */
+.left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.left button {
+    background: #eb5747;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* SIDEBAR */
+aside {
+    grid-area: aside;
+    background: var(--primary-color);
+    padding: 15px 10px;
+    border-radius: 0 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+aside a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+aside a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+aside a.active {
+    background: white;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+main{
+    grid-area: main;
+    padding: 25px;
+    background: var(--secondary-color);
+    overflow-y: auto;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+/* HEADER TABLE */
+th {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+}
+
+/* ISI TABLE */
+td {
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+}
+
+/* ZEBRA */
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
