@@ -250,6 +250,12 @@ tbody tr:hover {
     text-decoration: none;
 }
 
+.hapus a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 /* ================= MODAL ================= */
 .modal, .modal2 {
     display: none;

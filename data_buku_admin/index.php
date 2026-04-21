@@ -186,9 +186,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                         '" . $data['jenis'] . "',
                         '" . $data['stok'] . "'
                         )\"><i class='ph ph-pencil-simple'></i></button>";
-                    echo "<a href='?hapus=" . $data['id_buku'] . "' 
+                    echo "<a href='?hapus=" . $data['id_buku'] . "'><button class='hapus' 
                     onclick=\"return confirm('Apakah Anda yakin ingin menghapus buku ini?')\" class='hapus-link'>
-                    <button class='hapus'><i class='ph ph-trash-simple'></i></button></a>";
+                        <i class='ph ph-trash-simple'></i>
+                    </a>";
                     echo "</td>";
                     echo "</tr>";
                 }
@@ -230,6 +231,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <option value="edukasi">Edukasi</option>
                     <option value="fiksi">Fiksi</option>
                     <option value="non-fiksi">Non-Fiksi</option>
+                    <option value="novel">Novel</option>
                 </select>
             </div>
 
@@ -268,6 +270,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <option value="edukasi">Edukasi</option>
                     <option value="fiksi">Fiksi</option>
                     <option value="non-fiksi">Non-Fiksi</option>
+                    <option value="novel">Novel</option>
                 </select>
             </div>
             <label for="stok">jumlah buku</label>

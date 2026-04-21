@@ -123,8 +123,7 @@ main {
     grid-area: main;
     padding: 25px;
     background-color: var(--secondary-color);
-    overflow-y: auto;
-    height: 100vh;
+
 }
 
 /* ================= CARD ================= */
@@ -168,6 +167,8 @@ main {
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    height: 100vh;
 }
 
 .table-container h2 {

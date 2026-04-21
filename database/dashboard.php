@@ -31,7 +31,7 @@ $qTersedia = mysqli_query($koneksi,
      WHERE status != 'nonaktif' 
      AND status != 'hilang'"
 );
-$tersedia = mysqli_fetch_assoc($qTersedia);
+$tersedia['total'] = $totalBuku['total'] - $dipinjam['total'];
 
 // TOTAL HILANG
 $qHilang = mysqli_query($koneksi, 

@@ -123,102 +123,146 @@ main {
 
 .table-container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1150px;
     margin: auto;
     background: white;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-table {
+.table-container table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: white;
+    border-collapse: collapse;
+    font-size: 13px;
     border-radius: 12px;
     overflow: hidden;
 }
 
 /* HEADER */
-thead th {
+.table-container thead th {
     background: var(--primary-color);
     color: white;
-    padding: 14px;
-    font-size: 13px;
+    padding: 15px 12px;
+    font-weight: 600;
     text-align: center;
     border-bottom: 2px solid #b89678;
 }
 
 /* BODY */
-tbody td {
-    padding: 14px;
-    font-size: 13px;
+.table-container td {
+    padding: 14px 12px;
+    text-align: center;
     border-bottom: 1px solid var(--border-color);
+}
+
+/* GARIS VERTIKAL */
+.table-container th:not(:last-child),
+.table-container td:not(:last-child) {
     border-right: 1px solid var(--border-color);
 }
 
-/* HILANG GARIS KANAN */
-tbody td:last-child,
-thead th:last-child {
-    border-right: none;
-}
-
 /* ZEBRA */
-tbody tr:nth-child(even) {
+.table-container tr:nth-child(even) {
     background: var(--light-cream);
 }
 
 /* HOVER */
-tbody tr:hover {
-    background: #f1e7de;
+.table-container tr:hover {
+    background: #efe4db;
+    transition: 0.2s ease;
 }
 
-/* KOLOM NAMA & JUDUL */
-td:nth-child(2),
-td:nth-child(3) {
+/* KOLOM TEKS */
+.table-container td:nth-child(2),
+.table-container td:nth-child(3) {
     text-align: left;
-    padding-left: 20px;
+    padding-left: 18px;
 }
 
 /* KOLOM NO */
-td:first-child {
-    text-align: center;
+.table-container td:first-child {
     width: 50px;
-}
-
-/* ================= STATUS WARNA ================= */
-
-.status {
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 11px;
     font-weight: bold;
-    display: inline-block;
 }
 
-.status.dipinjam {
-    background: #fff3cd;
-    color: #856404;
+/* STATUS */
+.table-container td:nth-child(7) {
+    font-weight: 600;
+    color: #6b584c;
 }
 
-.status.dikembalikan {
-    background: #d4edda;
-    color: #155724;
+/* ================= AKSI (2 BARIS) ================= */
+
+.table-container td:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    max-width: 90px;
+    margin: auto;
 }
 
-/* ================= ICON AKSI ================= */
+/* BUTTON AKSI */
+.table-container td:last-child a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 34px;
+    border-radius: 10px;
+    background: #f5f6fa;
+    transition: 0.25s ease;
+    font-size: 16px;
+}
 
-td a {
-    margin: 0 5px;
-    font-size: 18px;
+.table-container td a{
     text-decoration: none;
+    color: inherit;
 }
 
-.ph-pencil { color: blue; }
-.ph-trash-simple { color: red; }
-.ph-check-circle { color: green; }
-.ph-warning-circle { color: orange; }
+/* PAKSA 2 ATAS 2 BAWAH */
+.table-container td:last-child a {
+    width: 40%;
+}
+
+/* HOVER UMUM */
+.table-container td a:hover {
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* ICON COLORS + HOVER */
+.ph-pencil { color: #3b82f6; }
+.ph-trash-simple { color: #ef4444; }
+.ph-check-circle { color: #22c55e; }
+.ph-warning-circle { color: #f59e0b; }
+
+.table-container td a:hover .ph-pencil {
+    color: white;
+}
+.table-container td a:hover .ph-trash-simple {
+    color: white;
+}
+.table-container td a:hover .ph-check-circle {
+    color: white;
+}
+.table-container td a:hover .ph-warning-circle {
+    color: white;
+}
+
+/* BACKGROUND HOVER */
+.table-container td a:hover:has(.ph-pencil) {
+    background: #3b82f6;
+}
+.table-container td a:hover:has(.ph-trash-simple) {
+    background: #ef4444;
+}
+.table-container td a:hover:has(.ph-check-circle) {
+    background: #22c55e;
+}
+.table-container td a:hover:has(.ph-warning-circle) {
+    background: #f59e0b;
+}
 
 /* ================= BUTTON TAMBAH ================= */
 
@@ -236,7 +280,7 @@ td a {
     opacity: 0.9;
 }
 
-/* ================= MODAL FORM ================= */
+/* ================= MODAL ================= */
 
 .modal {
     display: none;
@@ -336,3 +380,97 @@ td a {
 .btn-submit:hover {
     opacity: 0.9;
 }
+
+/* === OVERLAY / BACKDROP === */
+.modal {
+    display: none; /* aktifkan dengan JS: modal.style.display = 'flex' */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* === KOTAK MODAL === */
+.modal-content {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* === TOMBOL CLOSE (×) === */
+#closeModal2 {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+    line-height: 1;
+}
+#closeModal2:hover { color: #111; }
+
+/* === JUDUL === */
+.modal-content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eeeeee;
+    color: #111111;
+}
+
+/* === LABEL === */
+.modal-content form label,
+.modal-content form > * {
+    font-size: 14px;
+    color: #444;
+}
+
+/* === INPUT, SELECT === */
+.modal-content select,
+.modal-content input[type="date"],
+.modal-content input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    height: 38px;
+    padding: 0 10px;
+    font-size: 14px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    background: #f9f9f9;
+    color: #111;
+    outline: none;
+    margin-top: 4px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.modal-content select:focus,
+.modal-content input:focus {
+    border-color: #555;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+    background: #fff;
+}
+
+/* === TOMBOL SUBMIT === */
+.modal-content button[type="submit"] {
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    transition: opacity 0.15s, transform 0.1s;
+}
+.modal-content button[type="submit"]:hover { opacity: 0.82; }
+.modal-content button[type="submit"]:active { transform: scale(0.98); }

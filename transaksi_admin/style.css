@@ -106,17 +106,11 @@ aside a.active {
     font-weight: 600;
 }
 
-/* MAIN */
-main {
+main{
     grid-area: main;
-    padding: 20px;
+    padding: 25px;
     background: var(--secondary-color);
     overflow-y: auto;
-    height: 100vh;
-}
-
-main h2 {
-    margin-bottom: 15px;
 }
 
 /* TABLE */

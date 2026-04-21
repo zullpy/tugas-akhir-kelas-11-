@@ -82,8 +82,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
 
         <div class="cover-books">
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="cover-book">
+                <div class="cover-book <?= $row['stok'] == 0 ? 'habis' : '' ?>">
                     <img src="../upload/<?= $row['cover'] ?: 'default.jpg' ?>" width="120">
+        
+                <?php if ($row['stok'] == 0) { ?>
+                    <div class="overlay">Stok Habis</div>
+                <?php } ?>
                 </div>
             <?php } ?>
         </div>

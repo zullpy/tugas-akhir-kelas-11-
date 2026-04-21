@@ -64,11 +64,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <a href="../transaksi_admin">
             <i class="ph ph-cash-register"></i><span>Transaksi</span>
         </a>
-        <a href="../riwayat_transaksi_admin">
-            <i class="ph ph-money"></i><span>Riwayat Transaksi</span>
-        </a>
         <a href="../riwayat_crud">
-            <i class="ph ph-clock-counter-clockwise"></i><span>Riwayat CRUD</span>
+            <i class="ph ph-clock-counter-clockwise"></i><span>Activity Log</span>
         </a>
     </aside>
 
@@ -110,6 +107,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                 <?php } ?>
                 </div>
             <?php } ?>
+        </div>
     </main>
 </body>
 
