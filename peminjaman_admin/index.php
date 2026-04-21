@@ -128,15 +128,15 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <td><?= $data['no_wa']; ?></td>
                     <td><?= $data['status']; ?></td>
                     <td>
-                        <button class="btn-edit"
+                        <a class="btn-edit"
                             data-id="<?= $data['id_peminjaman']; ?>"
-    data-id_user="<?= $data['id_user']; ?>"
-    data-id_buku="<?= $data['id_buku']; ?>"
-    data-pinjam="<?= $data['tanggal_pinjam']; ?>"
-    data-kembali="<?= $data['tanggal_kembali']; ?>"
-    data-wa="<?= $data['no_wa']; ?>">
+                            data-id_user="<?= $data['id_user']; ?>"
+                            data-id_buku="<?= $data['id_buku']; ?>"
+                            data-pinjam="<?= $data['tanggal_pinjam']; ?>"
+                            data-kembali="<?= $data['tanggal_kembali']; ?>"
+                            data-wa="<?= $data['no_wa']; ?>">
                             <i class="ph ph-pencil"></i>
-                        </button>
+</a>
                         <a href="../database/hapus_peminjaman.php?id=<?= $data['id_peminjaman']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                             <i class="ph ph-trash-simple"></i>
                         </a>
