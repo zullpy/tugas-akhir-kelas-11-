@@ -174,7 +174,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
             </div>
 
             <div class="form-group">
-                <input type="text" name="no_wa" placeholder="Nomor WhatsApp (628XXXXXXXXX)" required>
+                <input type="text" name="no_wa" id="no_wa" placeholder="Nomor WhatsApp (628XXXXXXXXX)" required>
             </div>
             <button type="submit" class="btn-submit">
                 Tambah Peminjaman

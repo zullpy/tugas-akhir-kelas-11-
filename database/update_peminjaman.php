@@ -17,7 +17,22 @@ if(empty($id) || empty($id_user) || empty($id_buku)){
     die("Data tidak lengkap!");
 }
 
-// query update
+// AMBIL DATA LAMA
+$q_lama = mysqli_query($koneksi, "SELECT id_buku FROM peminjaman WHERE id_peminjaman = '$id'");
+$data_lama = mysqli_fetch_assoc($q_lama);
+$id_buku_lama = $data_lama['id_buku'];
+
+// CEK JIKA BUKU DIGANTI
+if($id_buku != $id_buku_lama){
+
+    // kembalikan stok buku lama
+    mysqli_query($koneksi, "UPDATE buku SET stok = stok + 1 WHERE id_buku = '$id_buku_lama'");
+
+    // kurangi stok buku baru
+    mysqli_query($koneksi, "UPDATE buku SET stok = stok - 1 WHERE id_buku = '$id_buku'");
+}
+
+// query update (punyamu tetap)
 $query = mysqli_query($koneksi, "UPDATE peminjaman SET
     id_user = '$id_user',
     id_buku = '$id_buku',

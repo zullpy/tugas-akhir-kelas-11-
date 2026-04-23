@@ -11,6 +11,19 @@ $tgl_pinjam = $_POST['tanggal_pinjam'];
 $tgl_kembali = $_POST['tanggal_kembali'];
 $no_wa = $_POST['no_wa'];
 
+// validasi nomor WA
+$wa = $_POST['no_wa'];
+
+// hanya angka
+if (!preg_match("/^[0-9]+$/", $wa)) {
+    die("Nomor harus angka!");
+}
+
+// format indonesia
+if (!preg_match("/^(08|628)[0-9]{8,11}$/", $wa)) {
+    die("<script>alert('Nomor WA tidak valid!');history.back();</script>");
+}
+
 // validasi kosong
 if (empty($id_user) || empty($id_buku) || empty($tgl_pinjam) || empty($tgl_kembali)) {
     die("<script>alert('Data tidak lengkap!');history.back();</script>");
@@ -119,4 +132,5 @@ try {
         window.location='$redirect';
     </script>";
 }
+
 ?>

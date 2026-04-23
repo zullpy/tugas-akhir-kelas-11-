@@ -137,7 +137,7 @@ header h2 {
 }
 
 .left h2 {
-    font-size: 15px;
+    font-size: 16px;
     color: rgb(0, 0, 0);
     position: relative;
     margin-right: 70px;
@@ -200,7 +200,7 @@ main {
     margin: 0;
     transform: translateX(-1px);
     overflow-y: auto;
-    height: 100vh;
+    height: calc(100vh - 70px);
 }
 
 /* ================= DATA ================= */

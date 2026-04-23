@@ -118,6 +118,8 @@ table {
     width: 100%;
     border-collapse: collapse;
     background: white;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 /* HEADER TABLE */

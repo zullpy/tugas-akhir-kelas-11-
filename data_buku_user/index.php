@@ -72,7 +72,7 @@ $result = mysqli_query($koneksi, $query);
     </div>
 
     <div class="left">
-        <h2>Selamat datang <?= $_SESSION['username'] ?>!!</h2>
+        <h2>selamat datang <?= $_SESSION['username'] ?>!!</h2>
         <form action="../database/logout.php" method="POST"
               onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
             <button>Log Out</button>
@@ -139,8 +139,9 @@ $result = mysqli_query($koneksi, $query);
 </div>
 
 <!-- TABEL -->
-<table>
-    <thead>
+<div class="table-container">
+    <table>
+        <thead>
         <tr>
             <th>No</th>
             <th>Judul Buku</th>
@@ -170,7 +171,7 @@ $result = mysqli_query($koneksi, $query);
             <!-- STATUS TANPA ICON -->
             <td>
                 <?php if ($data['stok'] == 0): ?>
-                    <span class="status status-habis">Tidak Tersedia</span>
+                    <span class="status status-habis">Dipinjam</span>
                 <?php else: ?>
                     <span class="status status-tersedia">Tersedia</span>
                 <?php endif; ?>
@@ -178,7 +179,8 @@ $result = mysqli_query($koneksi, $query);
         </tr>
     <?php } ?>
     </tbody>
-</table>
+    </table>
+</div>
 
 </main>
 

@@ -383,14 +383,18 @@ main {
 
 /* === OVERLAY / BACKDROP === */
 .modal {
-    display: none; /* aktifkan dengan JS: modal.style.display = 'flex' */
-    position: fixed;
+    display: none;
+    position: fixed; 
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
     z-index: 1000;
-    align-items: center;
-    justify-content: center;
     padding: 1rem;
+}
+
+.modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* === KOTAK MODAL === */
@@ -451,6 +455,7 @@ main {
     margin-top: 4px;
     transition: border-color 0.15s, box-shadow 0.15s;
 }
+
 .modal-content select:focus,
 .modal-content input:focus {
     border-color: #555;

@@ -29,7 +29,7 @@ document.querySelectorAll(".btn-edit").forEach(btn => {
     btn.addEventListener("click", function () {
 
         // buka modal
-        modalEdit.style.display = "block";
+        modalEdit.classList.add("show");
 
         // ambil data dari tombol
         document.getElementById("edit_id").value = this.dataset.id;
@@ -43,15 +43,17 @@ document.querySelectorAll(".btn-edit").forEach(btn => {
 
 // tombol close
 closeModal2.onclick = function () {
-    modalEdit.style.display = "none";
+    modalEdit.classList.remove("show");
 };
 
 // klik luar modal
 window.onclick = function (event) {
     if (event.target == modalEdit) {
-        modalEdit.style.display = "none";
+        modalEdit.classList.remove("show");
     }
 };
+
+
 
 const searchInput = document.getElementById("searchBuku");
 const list = document.getElementById("listBuku");
@@ -135,3 +137,24 @@ tglPinjam.addEventListener("change", function() {
     tglKembali.min = this.value; // ga boleh sebelum pinjam
 });
 
+// validasi nomor WA
+const waInput = document.getElementById("no_wa");
+
+waInput.addEventListener("input", function () {
+    let value = this.value;
+
+    // hapus selain angka
+    this.value = value.replace(/[^0-9]/g, "");
+});
+
+document.querySelector("form").addEventListener("submit", function(e){
+    let wa = document.getElementById("no_wa").value;
+
+    // regex nomor indo
+    let regex = /^(08|628)[0-9]{8,11}$/;
+
+    if(!regex.test(wa)){
+        alert("Nomor WhatsApp tidak valid!");
+        e.preventDefault(); // stop submit
+    }
+});

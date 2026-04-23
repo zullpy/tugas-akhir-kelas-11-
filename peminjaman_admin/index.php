@@ -211,7 +211,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             </div>
 
             <div class="form-group">
-                <input type="text" name="no_wa" placeholder="Nomor WhatsApp (628XXXXXXXXX)" required>
+                <input type="text" name="no_wa" id="no_wa" placeholder="Nomor WhatsApp (628XXXXXXXXX)" required>
             </div>
             <button type="submit" class="btn-submit">
                 Tambah Peminjaman
@@ -261,7 +261,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <input type="date" name="tgl_kembali" id="edit_kembali"><br><br>
 
                     No WA:
-                    <input type="text" name="no_wa" id="edit_wa"><br><br>
+                    <input type="text" name="no_wa" id="edit_wa no_wa"><br><br>
 
                     <button type="submit">Update</button>
                 </form>

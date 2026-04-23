@@ -180,7 +180,7 @@ main {
 /* ================= TABLE ================= */
 .table-container {
     overflow-y: auto;
-    max-height: 500px;
+    height: calc(100vh - 150px);
 }
 
 table {

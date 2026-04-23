@@ -67,3 +67,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+// validasi nomor WA
+const waInput = document.getElementById("no_wa");
+
+waInput.addEventListener("input", function () {
+    let value = this.value;
+
+    // hapus selain angka
+    this.value = value.replace(/[^0-9]/g, "");
+});
+
+document.querySelector("form").addEventListener("submit", function(e){
+    let wa = document.getElementById("no_wa").value;
+
+    // regex nomor indo
+    let regex = /^(08|628)[0-9]{8,11}$/;
+
+    if(!regex.test(wa)){
+        alert("Nomor WhatsApp tidak valid!");
+        e.preventDefault(); // stop submit
+    }
+});

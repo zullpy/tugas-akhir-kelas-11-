@@ -66,9 +66,9 @@ header {
 }
 
 .left h2 {
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
+    font-size: 16px;
+    font-weight: 800;
+    color: #000000;
 }
 
 .left button {
@@ -121,8 +121,7 @@ main {
     grid-area: main;
     padding: 20px;
     background: var(--secondary-color);
-    overflow-y: auto;
-    height: 100vh;
+
 }
 
 /* FILTER */
@@ -179,6 +178,11 @@ main {
 }
 
 /* TABLE */
+.table-container {
+    overflow-y: auto;
+    height: calc(100vh - 150px);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -186,6 +190,8 @@ table {
     overflow: hidden;
     background: white;
     margin-top: 10px;
+    border-radius: 20px;
+
 }
 
 table, th, td {
