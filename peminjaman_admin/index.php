@@ -93,9 +93,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <a href="../transaksi_admin">
             <i class="ph ph-cash-register"></i><span>Transaksi</span>
         </a>
-        <a href="../riwayat_crud">
-            <i class="ph ph-clock-counter-clockwise"></i><span>Activity Log</span>
-        </a>
     </aside>
 
     <main>
@@ -229,7 +226,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <input type="hidden" name="id" id="edit_id">
 
                     Nama:
-                    <select name="id_user" id="edit_user">
+                    <select name="id_user" id="edit_user" disabled selected>
                         <option value=''>-- Pilih Peminjam --</option>
                         <?php
                         $u = mysqli_query($koneksi, "SELECT * FROM users");
@@ -261,7 +258,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <input type="date" name="tgl_kembali" id="edit_kembali"><br><br>
 
                     No WA:
-                    <input type="text" name="no_wa" id="edit_wa no_wa"><br><br>
+                    <input type="text" name="no_wa" id="edit_wa" value=""><br><br>
 
                     <button type="submit">Update</button>
                 </form>

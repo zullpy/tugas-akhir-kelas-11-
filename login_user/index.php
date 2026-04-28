@@ -1,3 +1,20 @@
+<?php
+session_start();
+include '../database/koneksi.php';
+date_default_timezone_set('Asia/Jakarta');
+
+$data = mysqli_fetch_assoc(mysqli_query($koneksi, "
+    SELECT * FROM users 
+    WHERE id_user = '{$_SESSION['id_user']}'
+"));
+$now = date('Y-m-d H:i:s');
+
+mysqli_query($koneksi, "
+    UPDATE users 
+    SET last_login = '$now' 
+    WHERE id_user = '{$data['id_user']}'
+");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -62,9 +62,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <a href="../transaksi_admin" class="active">
             <i class="ph ph-cash-register"></i><span>Transaksi</span>
         </a>
-        <a href="../riwayat_crud">
-            <i class="ph ph-clock-counter-clockwise"></i><span>Activity Log</span>
-        </a>
     </aside>
 
     <main>
@@ -98,16 +95,31 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                 ");
 
                 while ($data = mysqli_fetch_assoc($query)) {
-                    $today = date('Y-m-d');
+
                     $tgl_kembali = $data['tanggal_kembali'];
 
-                    $hari_telat = 0;
-                    $denda = 0;
+                    // tentukan tanggal acuan
+                    if ($data['status'] == 'lunas' && !empty($data['tanggal_bayar'])) {
+                        $tanggal_acuan = $data['tanggal_bayar'];
+                    } else {
+                        $tanggal_acuan = date('Y-m-d');
+                    }
 
-                    if ($today > $tgl_kembali) {
-                        $hari_telat = floor((strtotime($today) - strtotime($tgl_kembali)) / (60 * 60 * 24));
+                    // hitung keterlambatan
+                    $hari_telat = 0;
+                    if ($tanggal_acuan > $tgl_kembali) {
+                        $hari_telat = floor((strtotime($tanggal_acuan) - strtotime($tgl_kembali)) / (60 * 60 * 24));
+                    }
+
+                    //  denda
+                    if ($data['status'] == 'lunas') {
+                        $denda = $data['denda']; // ambil dari DB (biar fix)
+                    } else {
                         $denda = $hari_telat * 5000;
                     }
+
+                    $is_telat = $hari_telat > 0;
+                    $is_lunas = $data['status'] == 'lunas';
                 ?>
                 <tr>
                     <td><?= $no++; ?></td>
@@ -115,23 +127,25 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <td><?= $data['judul']; ?></td>
                     <td><?= date('d-m-Y', strtotime($data['tanggal_pinjam'])); ?></td>
                     <td><?= date('d-m-Y', strtotime($data['tanggal_kembali'])); ?></td>
+
+                    <td><?= $is_telat ? $hari_telat . " hari" : "-"; ?></td>
+
                     <td>
-                        <?= ($hari_telat > 0) ? $hari_telat . " hari" : "-"; ?>
-                    </td>
-                    <td>
-                        <?php if ($data['status'] == 'lunas') { ?>
+                        <?php if ($is_lunas) { ?>
                             <span style="color:green; font-weight:bold;">Lunas</span>
-                        <?php } else { ?>
+                        <?php } elseif ($is_telat) { ?>
                             <span style="color:red;">Terlambat</span>
+                        <?php } else { ?>
+                            <span>Dipinjam</span>
                         <?php } ?>
                     </td>
+
+                    <td>Rp. <?= number_format($denda, 0, ',', '.'); ?></td>
+
                     <td>
-                            Rp. <?= number_format($denda, 0, ',', '.'); ?>
-                    </td>
-                    <td>
-                        <?php if ($data['status'] == 'terlambat') { ?>
-                            <a href="../database/bayar.php?id=<?= $data['id_transaksi']; ?>" 
-                                onclick="return confirm('Yakin sudah dibayar?')">
+                        <?php if ($is_telat && !$is_lunas) { ?>
+                            <a href="../database/bayar.php?id=<?= $data['id_transaksi']; ?>"
+                               onclick="return confirm('Yakin sudah dibayar?')">
                                 Bayar
                             </a>
                         <?php } else { ?>

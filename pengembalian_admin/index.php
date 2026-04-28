@@ -63,9 +63,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <a href="../transaksi_admin">
             <i class="ph ph-cash-register"></i><span>Transaksi</span>
         </a>
-        <a href="../riwayat_crud">
-            <i class="ph ph-clock-counter-clockwise"></i><span>Activity Log</span>
-        </a>
     </aside>
 
     <main>        

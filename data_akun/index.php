@@ -1,10 +1,14 @@
 <?php
 include '../database/akun.php';
+include '../database/koneksi.php';
+
 mysqli_query($koneksi, "
-    UPDATE users 
+    UPDATE users
     SET status = 'nonaktif'
-    WHERE last_login < NOW() - INTERVAL 1 MONTH
+    WHERE last_login IS NOT NULL
+    AND last_login < NOW() - INTERVAL 1 MONTH
 ");
+
 session_start();
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
@@ -66,9 +70,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <a href="../transaksi_admin">
             <i class="ph ph-cash-register"></i><span>Transaksi</span>
         </a>
-        <a href="../riwayat_crud">
-            <i class="ph ph-clock-counter-clockwise"></i><span>Activity Log</span>
-        </a>
     </aside>
     
 <main>
@@ -101,7 +102,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <div class="table-container">
             <div class="header-table">
                 <h2>Data Akun</h2>
-                <button id="btnTambah">Tambah User</button>
+                <div class="button-wrapper">
+                    <button id="btnTambah">Tambah User</button>
+                    <button id="btnTambah2">Tambah Admin</button>
+                </div>
             </div>
             <table border="1" cellspacing="0" cellpadding="10">
                 <thead>
@@ -151,11 +155,11 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     </div>
 </main>
 
-    <!-- Modal Tambah Admin -->
-<div class="modal" id="modalAdmin">
+    <!-- Modal Tambah user -->
+<div class="modal" id="modalUser">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
-        <h3>Tambah Akun Admin</h3>
+        <h3>Tambah Akun User</h3>
 
         <form action="../database/tambah_user.php" method="POST">
             <div class="form-group">
@@ -186,11 +190,38 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                 <input type="text" name="jurusan" placeholder="Jurusan" required>
             </div>
 
-            <button type="submit" class="btn-submit">Tambah Admin</button>
+            <button type="submit" class="btn-submit">Tambah User</button>
         </form>
     </div>
 </div>
     
+
+    <!-- Modal Tambah Admin -->
+<div class="modal" id="modalAdmin">
+    <div class="modal-content">
+        <span class="close" id="closeModal2">&times;</span>
+        <h3>Tambah Akun Admin</h3>
+
+        <form action="../database/tambah_admin.php" method="POST">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <div class="password-wrapper">
+                    <input type="password" name="password" id="input-password" placeholder="Password" required>
+                    <i class="ph ph-eye" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Tambah Admin</button>
+        </form>
+    </div>
+</div>
 </body>
 <script src="data_akun/script.js"></script>
 </html>
