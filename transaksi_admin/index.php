@@ -112,8 +112,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     }
 
                     //  denda
-                    if ($data['status'] == 'lunas') {
-                        $denda = $data['denda']; // ambil dari DB (biar fix)
+                    if ($data['status'] == 'hilang') {
+                        $denda = $data['denda']; // dari DB (harga buku)
+                    } elseif ($data['status'] == 'lunas') {
+                        $denda = $data['denda'];
                     } else {
                         $denda = $hari_telat * 5000;
                     }
@@ -131,10 +133,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <td><?= $is_telat ? $hari_telat . " hari" : "-"; ?></td>
 
                     <td>
-                        <?php if ($is_lunas) { ?>
+                        <?php if ($data['status'] == 'hilang') { ?>
+                            <span style="color:red; font-weight:bold;">Hilang</span>
+                        <?php } elseif ($is_lunas) { ?>
                             <span style="color:green; font-weight:bold;">Lunas</span>
                         <?php } elseif ($is_telat) { ?>
-                            <span style="color:red;">Terlambat</span>
+                            <span style="color:orange;">Terlambat</span>
                         <?php } else { ?>
                             <span>Dipinjam</span>
                         <?php } ?>
@@ -143,7 +147,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <td>Rp. <?= number_format($denda, 0, ',', '.'); ?></td>
 
                     <td>
-                        <?php if ($is_telat && !$is_lunas) { ?>
+                        <?php if (($is_telat || $data['status'] == 'hilang') && !$is_lunas) { ?>
                             <a href="../database/bayar.php?id=<?= $data['id_transaksi']; ?>"
                                onclick="return confirm('Yakin sudah dibayar?')">
                                 Bayar

@@ -37,6 +37,11 @@ $kembali = new DateTime($tgl_kembali);
 $max_kembali = clone $pinjam;
 $max_kembali->modify('+7 days');
 
+// minimal 1 hari (tidak boleh sama)
+if ($kembali == $pinjam) {
+    die("<script>alert('Minimal peminjaman 1 hari!');history.back();</script>");
+}
+
 // kembali sebelum pinjam
 if ($kembali < $pinjam) {
     die("<script>alert('Tanggal kembali tidak valid!');history.back();</script>");

@@ -226,16 +226,19 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <input type="hidden" name="id" id="edit_id">
 
                     Nama:
-                    <select name="id_user" id="edit_user" disabled selected>
+                    <select id="edit_user" disabled>
                         <option value=''>-- Pilih Peminjam --</option>
                         <?php
                         $u = mysqli_query($koneksi, "SELECT * FROM users");
                         while($user = mysqli_fetch_assoc($u)){
-                            echo "
-                            <option value='{$user['id_user']}'>{$user['username']}</option>";
+                            $selected = ($user['id_user'] == $data['id_user']) ? 'selected' : '';
+                            echo "<option value='{$user['id_user']}' $selected>{$user['username']}</option>";
                         }
                         ?>
                     </select>
+                    
+                    <!-- INI YANG DIKIRIM KE PHP -->
+                    <input type="hidden" name="id_user" value="<?= $data['id_user']; ?>">
                     <br>
                     <br>
 

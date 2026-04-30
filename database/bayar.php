@@ -3,32 +3,36 @@ include 'koneksi.php';
 
 $id = $_GET['id'];
 
-// ambil data transaksi dulu
+// ambil data transaksi + relasi ke buku
 $data = mysqli_fetch_assoc(mysqli_query($koneksi, "
-    SELECT * FROM transaksi WHERE id_transaksi = '$id'
+    SELECT t.*, p.id_buku, b.harga
+    FROM transaksi t
+    JOIN peminjaman p ON t.id_peminjaman = p.id_peminjaman
+    JOIN buku b ON p.id_buku = b.id_buku
+    WHERE t.id_transaksi = '$id'
 "));
 
 $today = date('Y-m-d');
-$tgl_kembali = $data['tanggal_kembali'];
 
-// hitung telat
-$hari_telat = 0;
-if ($today > $tgl_kembali) {
-    $hari_telat = floor((strtotime($today) - strtotime($tgl_kembali)) / (60 * 60 * 24));
-}
+// 🔥 denda hilang = harga buku
+$denda = $data['harga'];
 
-// hitung denda FIX
-$denda = $hari_telat * 5000;
-
-// update
+// update transaksi jadi lunas
 mysqli_query($koneksi, "
     UPDATE transaksi 
     SET status = 'lunas',
         tanggal_bayar = '$today',
-        denda = '$denda'
+        jumlah = '$denda'
     WHERE id_transaksi = '$id'
 ");
 
-// balik ke halaman
+// 🔥 kurangi stok buku (karena hilang)
+mysqli_query($koneksi, "
+    UPDATE buku 
+    SET stok = stok - 1,
+        jumlah_tetap = jumlah_tetap - 1
+    WHERE id_buku = '{$data['id_buku']}'
+");
+
 header("Location: ../transaksi_admin");
 exit;

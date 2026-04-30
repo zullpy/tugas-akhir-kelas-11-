@@ -32,9 +32,35 @@ if($id_buku != $id_buku_lama){
     mysqli_query($koneksi, "UPDATE buku SET stok = stok - 1 WHERE id_buku = '$id_buku'");
 }
 
+// validasi tanggal
+$pinjam = new DateTime($tgl_pinjam);
+$kembali = new DateTime($tgl_kembali);
+
+// tidak boleh kembali sebelum pinjam
+if ($kembali < $pinjam) {
+    die("<script>alert('Tanggal kembali tidak valid!');history.back();</script>");
+}
+
+// hitung selisih hari
+$selisih = $pinjam->diff($kembali)->days;
+
+// minimal 1 hari
+if ($selisih < 1) {
+    die("<script>alert('Minimal peminjaman 1 hari!');history.back();</script>");
+}
+
+// maksimal 7 hari
+if ($selisih > 7) {
+    die("<script>alert('Maksimal peminjaman hanya 7 hari!');history.back();</script>");
+}
+
+// validasi nomor WA (format Indonesia)
+if (!preg_match("/^(08|628)[0-9]{8,11}$/", $no_wa)) {
+    die("<script>alert('Nomor WA tidak valid!');history.back();</script>");
+}
+
 // query update (punyamu tetap)
 $query = mysqli_query($koneksi, "UPDATE peminjaman SET
-    id_user = '$id_user',
     id_buku = '$id_buku',
     tanggal_pinjam = '$tgl_pinjam',
     tanggal_kembali = '$tgl_kembali',
