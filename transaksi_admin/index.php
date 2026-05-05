@@ -130,7 +130,17 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <td><?= date('d-m-Y', strtotime($data['tanggal_pinjam'])); ?></td>
                     <td><?= date('d-m-Y', strtotime($data['tanggal_kembali'])); ?></td>
 
-                    <td><?= $is_telat ? $hari_telat . " hari" : "-"; ?></td>
+                    <td>
+                        <?php
+                        if ($data['status'] == 'hilang' ) {
+                            echo "-";
+                        } elseif ($is_telat) {
+                            echo $hari_telat . " hari";
+                        } else {
+                            echo "-";
+                        }
+                        ?>
+                    </td>
 
                     <td>
                         <?php if ($data['status'] == 'hilang') { ?>

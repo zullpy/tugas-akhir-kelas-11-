@@ -1,14 +1,15 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include 'koneksi.php';
 
 $id = $_GET['id'];
 
 // ambil data transaksi + relasi ke buku
 $data = mysqli_fetch_assoc(mysqli_query($koneksi, "
-    SELECT t.*, p.id_buku, b.harga
+    SELECT t.*, b.harga
     FROM transaksi t
-    JOIN peminjaman p ON t.id_peminjaman = p.id_peminjaman
-    JOIN buku b ON p.id_buku = b.id_buku
+    JOIN buku b ON t.id_buku = b.id_buku
     WHERE t.id_transaksi = '$id'
 "));
 
@@ -22,11 +23,11 @@ mysqli_query($koneksi, "
     UPDATE transaksi 
     SET status = 'lunas',
         tanggal_bayar = '$today',
-        jumlah = '$denda'
-    WHERE id_transaksi = '$id'
+        denda = '{$data['harga']}'
+        WHERE id_transaksi = '$id'
 ");
 
-// 🔥 kurangi stok buku (karena hilang)
+// kurangi stok buku
 mysqli_query($koneksi, "
     UPDATE buku 
     SET stok = stok - 1,
