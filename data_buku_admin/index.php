@@ -177,7 +177,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     echo "<td>" . $data['tahun_terbit'] . "</td>";
                     echo "<td>" . $data['jenis'] . "</td>";
                     echo "<td>" . $data['stok'] . "</td>";
-                    echo "<td>" . $data['status'] . "</td>";
+                    $stok = $data['stok'];
+                        $statusLabel = $stok == 0 ? 'Habis' : 'Tersedia';
+                        $statusClass = $stok == 0 ? 'status-merah' : 'status-hijau';
+                    echo "<td><span class='$statusClass'>$statusLabel</span></td>";
                     echo "<td>";
                     echo "<button class='edit'
                         onclick=\"openEditModal(
