@@ -4,6 +4,13 @@ ini_set('display_errors', 1);
 include 'koneksi.php';
 session_start();
 
+// validasi kosong
+if (empty($_POST['id_user']) || empty($_POST['id_buku']) || 
+    empty($_POST['tanggal_pinjam']) || empty($_POST['tanggal_kembali']) || 
+    empty($_POST['no_wa'])) {
+    die("<script>alert('Data tidak lengkap!');history.back();</script>");
+}
+
 // ambil data
 $id_user = $_POST['id_user'];
 $id_buku = $_POST['id_buku'];
@@ -11,23 +18,17 @@ $tgl_pinjam = $_POST['tanggal_pinjam'];
 $tgl_kembali = $_POST['tanggal_kembali'];
 $no_wa = $_POST['no_wa'];
 
-// validasi nomor WA
-$wa = $_POST['no_wa'];
-
 // hanya angka
-if (!preg_match("/^[0-9]+$/", $wa)) {
-    die("Nomor harus angka!");
+if (!preg_match("/^[0-9]+$/", $no_wa)) {
+    die("Nomor whatsapp harus angka!");
 }
 
 // format indonesia
-if (!preg_match("/^(08|628)[0-9]{8,11}$/", $wa)) {
-    die("<script>alert('Nomor WA tidak valid!');history.back();</script>");
+if (!preg_match("/^(08|628)[0-9]{8,11}$/", $no_wa)) {
+    die("<script>alert('Nomor whatsapp anda tidak valid!');history.back();</script>");
 }
 
-// validasi kosong
-if (empty($id_user) || empty($id_buku) || empty($tgl_pinjam) || empty($tgl_kembali)) {
-    die("<script>alert('Data tidak lengkap!');history.back();</script>");
-}
+
 
 // validasi tanggal
 $pinjam = new DateTime($tgl_pinjam);

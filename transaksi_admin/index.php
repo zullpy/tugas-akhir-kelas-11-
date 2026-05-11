@@ -159,7 +159,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <td>
                         <?php if (($is_telat || $data['status'] == 'hilang') && !$is_lunas) { ?>
                             <a href="../database/bayar.php?id=<?= $data['id_transaksi']; ?>"
-                               onclick="return confirm('Yakin sudah dibayar?')">
+                               onclick="return confirm('Yakin sudah dibayar?')" class="btn-bayar">
                                 Bayar
                             </a>
                         <?php } else { ?>

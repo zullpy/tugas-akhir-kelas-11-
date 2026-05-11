@@ -24,7 +24,7 @@ body {
         "header header"
         "aside main";
     min-height: 100vh;
-
+    overflow: hidden;
 }
 
 /* ================= HEADER ================= */
@@ -166,6 +166,8 @@ main {
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    height: calc(100vh - 240px);
 }
 
 .table-container h2 {

@@ -289,10 +289,23 @@ tbody tr:hover {
     background: var(--light-cream);
     padding: 25px;
     border-radius: 15px;
-    width: 400px;
+    width: 800px;
     max-width: 90%;
     position: relative;
     animation: fadeIn 0.3s ease;
+}
+
+/* FORM COLUMNS */
+.form-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
 }
 
 /* TOMBOL CLOSE */
@@ -307,14 +320,17 @@ tbody tr:hover {
 /* JUDUL */
 .modal-content2 h3 {
     margin-bottom: 15px;
-    color: var(--primary-color);
+    font-size: 25px;
+    font-weight: 1500;
+    color: var(--soft-brown);
     text-align: center;
 }
 
 /* LABEL */
 .modal-content2 label {
     display: block;
-    margin-top: 10px;
+    margin-top: 0;
+    margin-bottom: 5px;
     font-size: 14px;
     color: black;
 }
@@ -324,12 +340,17 @@ tbody tr:hover {
 .modal-content2 select {
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
+    margin-bottom: 15px;
     border: 1px solid var(--soft-brown);
     border-radius: 8px;
     outline: none;
     background: #fff;
     transition: 0.2s;
+}
+
+/* FORM GROUP */
+.modal-content2 .form-group {
+    margin-bottom: 0;
 }
 
 /* FOCUS EFFECT */
@@ -355,7 +376,7 @@ tbody tr:hover {
 
 /* HOVER BUTTON */
 .modal-content2 button:hover {
-    background: var(--secondary-color);
+    background: #a27d66;
 }
 
 @keyframes muncul {

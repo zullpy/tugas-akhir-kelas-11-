@@ -105,6 +105,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <th>Tahun Terbit</th>
                     <th>jenis</th>
                     <th>Jumlah Buku</th>
+                    <th>Harga(Rp)</th>
                     <th>status</th>
                     <th>Aksi</th>
                 </tr>
@@ -177,6 +178,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     echo "<td>" . $data['tahun_terbit'] . "</td>";
                     echo "<td>" . $data['jenis'] . "</td>";
                     echo "<td>" . $data['stok'] . "</td>";
+                    echo "<td>" . number_format($data['harga'], 0, ',', '.') . "</td>";
                     $stok = $data['stok'];
                         $statusLabel = $stok == 0 ? 'Habis' : 'Tersedia';
                         $statusClass = $stok == 0 ? 'status-merah' : 'status-hijau';
@@ -190,7 +192,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                         '" . htmlspecialchars($data['penerbit']) . "',
                         '" . $data['tahun_terbit'] . "',
                         '" . $data['jenis'] . "',
-                        '" . $data['stok'] . "'
+                        '" . $data['stok'] . "',
+                        '" . $data['harga'] . "'
                         )\"><i class='ph ph-pencil-simple'></i></button>";
                     echo "<a href='?hapus=" . $data['id_buku'] . "'><button class='hapus' 
                     onclick=\"return confirm('Apakah Anda yakin ingin menghapus buku ini?')\" class='hapus-link'>
@@ -244,6 +247,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             <div class="form-group">
                 <input type="number" name="stok" placeholder="Jumlah Buku" required>
             </div>
+            
+            <div class="form-group">
+                <input type="number" name="harga" placeholder="harga buku(tanpa titik)" required>
+            </div>
 
             <button type="submit" class="btn-submit">Tambah Buku</button>
         </form>
@@ -259,28 +266,37 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
             <h3>Edit Buku</h3>
 
-            <label for="file">Cover Buku</label>
-            <input type="file" name="cover" id="edit_cover">
-            <label for="judul">judul buku</label>
-            <input type="text" name="judul" id="edit_judul">
-            <label for="penulis">penulis</label>
-            <input type="text" name="penulis" id="edit_penulis">
-            <label for="penerbit">penerbit</label>
-            <input type="text" name="penerbit" id="edit_penerbit">
-            <label for="tahun_terbit">tahun terbit</label>
-            <input type="text" name="tahun_terbit" id="edit_tahun">
-            <label for="jenis">jenis buku</label>
-            <div class="form-group" id="edit_jenis">
-                <select name="jenis" required>
-                    <option value="">Pilih Jenis</option>
-                    <option value="edukasi">Edukasi</option>
-                    <option value="fiksi">Fiksi</option>
-                    <option value="non-fiksi">Non-Fiksi</option>
-                    <option value="novel">Novel</option>
-                </select>
+            <div class="form-columns">
+                <div class="form-column left-column">
+                    <label for="file">Cover Buku</label>
+                    <input type="file" name="cover" id="edit_cover">
+                    <label for="judul">judul buku</label>
+                    <input type="text" name="judul" id="edit_judul">
+                    <label for="penulis">penulis</label>
+                    <input type="text" name="penulis" id="edit_penulis">
+                    <label for="penerbit">penerbit</label>
+                    <input type="text" name="penerbit" id="edit_penerbit">
+                </div>
+
+                <div class="form-column right-column">
+                    <label for="tahun_terbit">tahun terbit</label>
+                    <input type="text" name="tahun_terbit" id="edit_tahun">
+                    <label for="jenis">jenis buku</label>
+                    <div class="form-group" id="edit_jenis">
+                        <select name="jenis" required>
+                            <option value="">Pilih Jenis</option>
+                            <option value="edukasi">Edukasi</option>
+                            <option value="fiksi">Fiksi</option>
+                            <option value="non-fiksi">Non-Fiksi</option>
+                            <option value="novel">Novel</option>
+                        </select>
+                    </div>
+                    <label for="stok">jumlah buku</label>
+                    <input type="number" name="stok" id="edit_stok">
+                    <label for="harga">harga buku</label>
+                    <input type="number" name="harga" id="edit_harga">
+                </div>
             </div>
-            <label for="stok">jumlah buku</label>
-            <input type="number" name="stok" id="edit_stok">
 
             <button type="submit">Update</button>
         </form>

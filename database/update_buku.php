@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include 'koneksi.php';
 
 $id = $_POST['id'];
@@ -8,6 +10,7 @@ $penerbit = $_POST['penerbit'];
 $tahun = $_POST['tahun_terbit'];
 $jenis = $_POST['jenis'];
 $stok = $_POST['stok'];
+$harga = $_POST['harga'];
 
 $folder = "../upload/";
 
@@ -39,12 +42,12 @@ if ($_FILES['cover']['name'] != "") {
     // update + cover baru
     $stmt = mysqli_prepare($koneksi,
         "UPDATE buku 
-        SET cover=?, judul=?, penulis=?, penerbit=?, tahun_terbit=?, jenis=?, stok=?, jumlah_tetap=? 
+        SET cover=?, judul=?, penulis=?, penerbit=?, tahun_terbit=?, jenis=?, stok=?, jumlah_tetap=?, harga=?
         WHERE id_buku=?"
     );
 
-    mysqli_stmt_bind_param($stmt, "ssssssiii",
-        $cover, $judul, $penulis, $penerbit, $tahun, $jenis, $stok, $stok, $id
+    mysqli_stmt_bind_param($stmt, "ssssssiiii",
+        $cover, $judul, $penulis, $penerbit, $tahun, $jenis, $stok, $stok, $harga, $id
     );
 
 } else {
@@ -52,12 +55,12 @@ if ($_FILES['cover']['name'] != "") {
     // update tanpa ubah cover
     $stmt = mysqli_prepare($koneksi,
         "UPDATE buku 
-        SET judul=?, penulis=?, penerbit=?, tahun_terbit=?, jenis=?, stok=?, jumlah_tetap=? 
+        SET judul=?, penulis=?, penerbit=?, tahun_terbit=?, jenis=?, stok=?, jumlah_tetap=?, harga=?
         WHERE id_buku=?"
     );
 
-    mysqli_stmt_bind_param($stmt, "ssssssii",
-        $judul, $penulis, $penerbit, $tahun, $jenis, $stok, $stok, $id
+    mysqli_stmt_bind_param($stmt, "ssssssiii",
+        $judul, $penulis, $penerbit, $tahun, $jenis, $stok, $stok, $harga, $id
     );
 }
 

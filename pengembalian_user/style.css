@@ -112,7 +112,8 @@ main {
     padding: 20px;
     background: var(--secondary-color);
     overflow-y: auto;
-    height: 100vh;
+    height: calc(100vh - 70px);
+
 }
 
 main h2 {
@@ -120,6 +121,7 @@ main h2 {
 }
 
 /* TABLE */
+
 table {
     width: 100%;
     border-collapse: collapse;

@@ -70,7 +70,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
         <div class="left">
             <h2>selamat datang <?php echo $_SESSION['username']; ?>!</h2>
             <form action="../database/logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
-                <button>Log Out</button>
+                <button type="submit">Log Out</button>
             </form>
         </div>
     </header>
@@ -137,7 +137,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
         <span class="close" id="closeModal">&times;</span>
         <h3>Tambah Peminjaman</h3>
 
-        <form action="../database/tambah_peminjaman.php" method="POST">
+        <form action="../database/tambah_peminjaman.php" method="POST" id="formPeminjaman">
 
             <!-- PILIH BUKU -->
             <div class="form-group">

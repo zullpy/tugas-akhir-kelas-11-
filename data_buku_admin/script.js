@@ -31,7 +31,7 @@ function closeFilterBox() {
     box.style.display = "none";
 }
 
-function openEditModal(id, judul, penulis, penerbit, tahun, jenis, stok) {
+function openEditModal(id, judul, penulis, penerbit, tahun, jenis, stok, harga) {
     document.getElementById("edit_id").value = id;
     document.getElementById("edit_judul").value = judul;
     document.getElementById("edit_penulis").value = penulis;
@@ -39,6 +39,7 @@ function openEditModal(id, judul, penulis, penerbit, tahun, jenis, stok) {
     document.getElementById("edit_tahun").value = tahun;
     document.querySelector("#edit_jenis select").value = jenis;
     document.getElementById("edit_stok").value = stok;
+    document.getElementById("edit_harga").value = harga;
     
 
     document.getElementById("editModal").classList.add("show");

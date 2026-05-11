@@ -10,13 +10,14 @@ $jenis = $_POST['jenis'];
 $stok = $_POST['stok'];
 $cover = $_FILES['cover']['name'];
 $tmp = $_FILES['cover']['tmp_name'];
+$harga = $_POST['harga'];
 
-$query = "INSERT INTO buku (judul, penulis, penerbit, tahun_terbit, jenis, stok, jumlah_tetap, cover)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+$query = "INSERT INTO buku (judul, penulis, penerbit, tahun_terbit, jenis, stok, jumlah_tetap, cover, harga)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($koneksi, $query);
 
-mysqli_stmt_bind_param($stmt, "ssssssss",
+mysqli_stmt_bind_param($stmt, "sssssssss",
     $judul,
     $penulis,
     $penerbit,
@@ -24,7 +25,8 @@ mysqli_stmt_bind_param($stmt, "ssssssss",
     $jenis,
     $stok,
     $stok,
-    $cover
+    $cover,
+    $harga
 );
 
 // folder tujuan

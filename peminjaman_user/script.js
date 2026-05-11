@@ -78,7 +78,9 @@ waInput.addEventListener("input", function () {
     this.value = value.replace(/[^0-9]/g, "");
 });
 
-document.querySelector("form").addEventListener("submit", function(e){
+const formPeminjaman = document.getElementById("formPeminjaman");
+
+formPeminjaman.addEventListener("submit", function(e){
     let wa = document.getElementById("no_wa").value;
 
     // regex nomor indo
@@ -86,6 +88,6 @@ document.querySelector("form").addEventListener("submit", function(e){
 
     if(!regex.test(wa)){
         alert("Nomor WhatsApp tidak valid!");
-        e.preventDefault(); // stop submit
+        e.preventDefault();
     }
 });
