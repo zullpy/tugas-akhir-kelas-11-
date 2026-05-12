@@ -40,7 +40,7 @@ $tersedia = mysqli_fetch_assoc($qTersedia);
 $qHilang = mysqli_query($koneksi, 
     "SELECT COUNT(*) AS total 
      FROM transaksi
-     WHERE status = 'hilang'"
+     WHERE status_tetap = 'hilang'"
 );
 $hilang = mysqli_fetch_assoc($qHilang);
 
